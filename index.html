@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Understory · works by mengyahh</title>
+<meta name="description" content="Understory 是 mengyahh 的作品與接案品牌：給自由工作者的生活工作管理大師、白肉雞飼養紀錄——把容易被忽略的日常紀錄，整理成看得懂、用得上的工具。">
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #FAF7EF;
+    --surface: #F1EDE0;
+    --ink: #23281F;
+    --ink-soft: #565C4C;
+    --ink-muted: #83806f;
+    --moss: #3B6748;
+    --sprout: #6E9450;
+    --clay: #A97C4F;
+    --border: rgba(35, 40, 31, 0.14);
+    --border-strong: rgba(35, 40, 31, 0.30);
+    --chip-bg: rgba(59, 103, 72, 0.10);
+    --chip-bg-open: rgba(169, 124, 79, 0.16);
+    --c-blue: #2a78d6;
+    --c-orange: #eb6834;
+    --c-aqua: #1baf7a;
+    --chart-grid: rgba(35, 40, 31, 0.12);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #14180F;
+      --surface: #1B2115;
+      --ink: #EDE9DC;
+      --ink-soft: #A9AF98;
+      --ink-muted: #7d8271;
+      --moss: #9BC985;
+      --sprout: #C7DC9E;
+      --clay: #D6A96F;
+      --border: rgba(237, 233, 220, 0.14);
+      --border-strong: rgba(237, 233, 220, 0.30);
+      --chip-bg: rgba(155, 201, 133, 0.12);
+      --chip-bg-open: rgba(214, 169, 111, 0.18);
+      --c-blue: #3987e5;
+      --c-orange: #d95926;
+      --c-aqua: #199e70;
+      --chart-grid: rgba(237, 233, 220, 0.14);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #14180F; --surface: #1B2115; --ink: #EDE9DC; --ink-soft: #A9AF98; --ink-muted: #7d8271;
+    --moss: #9BC985; --sprout: #C7DC9E; --clay: #D6A96F;
+    --border: rgba(237, 233, 220, 0.14); --border-strong: rgba(237, 233, 220, 0.30);
+    --chip-bg: rgba(155, 201, 133, 0.12); --chip-bg-open: rgba(214, 169, 111, 0.18);
+    --c-blue: #3987e5; --c-orange: #d95926; --c-aqua: #199e70;
+    --chart-grid: rgba(237, 233, 220, 0.14);
+  }
+
+  * { box-sizing: border-box; }
+  html { background: var(--bg); }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: "Karla", -apple-system, "Noto Sans TC", "PingFang TC", sans-serif; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+  img { max-width: 100%; }
+  h1, h2, h3, .wordmark { font-family: "Fraunces", "Noto Serif TC", Georgia, serif; text-wrap: balance; font-weight: 600; letter-spacing: -0.01em; color: var(--ink); }
+  .mono { font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace; }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 28px; }
+  .prose { max-width: 64ch; }
+  .prose p { margin: 0 0 16px; }
+  .prose p:last-child { margin-bottom: 0; }
+  .prose strong { color: var(--moss); font-weight: 700; }
+  a { color: var(--moss); }
+
+  .topbar { position: sticky; top: 0; z-index: 5; background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--border); }
+  .topbar .wrap { display: flex; align-items: center; justify-content: space-between; padding: 16px 28px; max-width: 980px; }
+  .topbar .wordmark { font-size: 20px; margin: 0; }
+  .topbar .wordmark span { color: var(--sprout); }
+  .topnav { display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; }
+  .topnav a { font-family: "IBM Plex Mono", monospace; font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-soft); text-decoration: none; }
+  .topnav a:hover { color: var(--moss); }
+
+  .hero { padding: 68px 0 52px; border-bottom: 1px solid var(--border); }
+  .eyebrow { font-family: "IBM Plex Mono", monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sprout); margin: 0 0 20px; }
+  .hero h1 { font-size: clamp(32px, 5.2vw, 50px); line-height: 1.15; margin: 0 0 20px; max-width: 16ch; }
+  .hero .lede { font-size: 17px; color: var(--ink-soft); max-width: 58ch; margin: 0; }
+
+  .teaser-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 40px; }
+  .teaser { background: var(--bg); padding: 24px 26px; text-decoration: none; display: block; }
+  .teaser .tname { font-size: 20px; margin: 0 0 8px; color: var(--ink); }
+  .teaser p { font-size: 13.5px; color: var(--ink-soft); margin: 0 0 10px; }
+  .status-chip { display: inline-block; font-family: "IBM Plex Mono", monospace; font-size: 10.5px; letter-spacing: 0.05em; text-transform: uppercase; background: var(--chip-bg); color: var(--moss); padding: 3px 9px; border-radius: 20px; }
+  .status-chip.open { background: var(--chip-bg-open); color: var(--clay); }
+
+  .product { padding: 64px 0; border-bottom: 1px solid var(--border); scroll-margin-top: 64px; }
+  .product h2 { font-size: 30px; margin: 12px 0 22px; }
+  .product .status-chip { margin-bottom: 0; }
+
+  .feature-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin: 30px 0; }
+  .feature { background: var(--bg); padding: 20px 22px; }
+  .feature h3 { font-family: "Karla", sans-serif; font-size: 14.5px; font-weight: 700; color: var(--moss); margin: 0 0 8px; text-transform: none; letter-spacing: 0; }
+  .feature p { font-size: 13.5px; color: var(--ink-soft); margin: 0; }
+
+  .screens-block { margin: 30px 0; }
+  .screens-block .chart-title { font-family: "IBM Plex Mono", monospace; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-soft); margin: 0 0 18px; }
+  .screens-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .screen-shot { border: 1px solid var(--border); border-radius: 6px; overflow: hidden; background: var(--surface); }
+  .screen-shot img { display: block; width: 100%; height: auto; }
+  .screen-shot p { margin: 0; padding: 8px 10px; font-size: 11.5px; color: var(--ink-muted); text-align: center; border-top: 1px solid var(--border); }
+  @media (max-width: 720px) {
+    .screens-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .chart-block { border: 1px solid var(--border); border-radius: 4px; padding: 24px 26px; margin: 30px 0; background: var(--surface); }
+  .chart-block .chart-title { font-family: "IBM Plex Mono", monospace; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-soft); margin: 0 0 18px; }
+  .chart-caption { font-size: 11.5px; color: var(--ink-muted); margin: 14px 0 0; font-style: italic; }
+  .chart-row { display: flex; gap: 32px; align-items: center; flex-wrap: wrap; }
+  .legend { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+  .legend li { display: flex; align-items: center; gap: 10px; font-size: 13.5px; color: var(--ink); }
+  .legend .swatch { width: 11px; height: 11px; border-radius: 2px; flex: none; }
+  .legend .pct { font-family: "IBM Plex Mono", monospace; color: var(--ink-soft); margin-left: 4px; font-size: 12px; }
+
+  .reference-note { font-size: 13px; color: var(--ink-muted); border-left: 2px solid var(--border-strong); padding-left: 16px; margin: 26px 0; }
+
+  .callout { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 20px 24px; margin-top: 28px; font-size: 14px; color: var(--ink-soft); }
+  .callout strong { color: var(--ink); }
+  .callout.open { border-color: var(--clay); }
+  .cta-btn { display: inline-block; margin-top: 14px; margin-right: 10px; padding: 10px 20px; background: var(--moss); color: var(--bg); text-decoration: none; border-radius: 3px; font-size: 13.5px; font-weight: 700; }
+  .cta-btn:hover { opacity: 0.9; }
+  .cta-btn.secondary { background: transparent; color: var(--moss); border: 1px solid var(--border-strong); }
+  .cta-row { margin-top: 14px; }
+  .callout .fine-print { display: block; margin-top: 14px; font-size: 12.5px; color: var(--ink-muted); }
+
+  .about, .contact { padding: 56px 0; }
+  .about { border-bottom: 1px solid var(--border); }
+  .about h2, .contact h2 { font-size: 25px; margin: 0 0 22px; }
+  .contact-links { display: flex; gap: 24px; margin-top: 18px; flex-wrap: wrap; }
+  .contact-links a { font-family: "IBM Plex Mono", monospace; font-size: 14px; text-decoration: none; border-bottom: 1px solid var(--border-strong); padding-bottom: 2px; }
+
+  footer { padding: 32px 0 64px; border-top: 1px solid var(--border); }
+  footer .wrap p { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--ink-muted); margin: 0; }
+
+  @media (max-width: 680px) {
+    .teaser-row, .feature-grid { grid-template-columns: 1fr; }
+    .topnav { display: none; }
+    .chart-row { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Karla:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+</head>
+<body>
+
+<nav class="topbar">
+  <div class="wrap">
+    <p class="wordmark">under<span>story</span></p>
+    <ul class="topnav">
+      <li><a href="#freelance">給自由工作者的生活工作管理大師</a></li>
+      <li><a href="#poultry">白肉雞App</a></li>
+      <li><a href="#about">關於</a></li>
+      <li><a href="#contact">聯絡</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Understory · works by mengyahh</p>
+    <h1>There's always an understory.</h1>
+    <p class="lede">
+      由 mengyahh 打造的小型數位工具。把容易被忽略、卻天天在發生的紀錄——雞舍裡的每一批數字、接案生活裡的工時與收支——
+      整理成看得懂、用得上的資訊。目前有兩個進行中的專案：
+    </p>
+    <div class="teaser-row">
+      <a class="teaser" href="#freelance">
+        <p class="tname">給自由工作者的生活工作管理大師</p>
+        <p>接案、工時、多幣值記帳，一個工具搞定</p>
+        <span class="status-chip open">開放試用中</span>
+      </a>
+      <a class="teaser" href="#poultry">
+        <p class="tname">白肉雞飼養紀錄</p>
+        <p>給中小型契約戶的每日養殖紀錄與換肉率分析</p>
+        <span class="status-chip">開發中</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<section class="product" id="freelance">
+  <div class="wrap">
+    <p class="eyebrow">Product 01 · 開放試用中</p>
+    <h2>給自由工作者的生活工作管理大師</h2>
+    <div class="prose">
+      <p>
+        接案生活常常要同時追蹤好幾個合作單位的專案、費用、工時，記帳又是另一套系統——
+        <strong>給自由工作者的生活工作管理大師</strong>把接案紀錄、多幣值記帳、待辦與靈感筆記整合在同一個工具裡，
+        不用在好幾個 App 之間切換。這個工具最初是開發者為了解決自己接案生活的管理需求所打造的，
+        不是先設計好功能表再找使用情境，而是先有真實的痛點，才長出現在這些功能。
+      </p>
+    </div>
+    <div class="feature-grid">
+      <div class="feature">
+        <h3>接案追蹤</h3>
+        <p>記錄合作單位、專案、費用方式（時薪或固定），並填寫預估工時。</p>
+      </div>
+      <div class="feature">
+        <h3>工時比對</h3>
+        <p>另有一張表隨時登記實際花費的工時，自動跟預估工時比較，慢慢練出更準的估價能力。</p>
+      </div>
+      <div class="feature">
+        <h3>多幣值記帳</h3>
+        <p>付款方式、消費類型都能記錄，不同幣值的收支統一換算成單一幣值分析，不用自己心算匯率。</p>
+      </div>
+      <div class="feature">
+        <h3>收支圖表</h3>
+        <p>月度／年度收入、與目標收入的差額、收入來源（依合作單位）、消費類型與消費方式的金額分布，一次看懂。</p>
+      </div>
+      <div class="feature">
+        <h3>隨手待辦與靈感</h3>
+        <p>待辦事項依期限自動排序，可設完成或暫緩；靈感隨手記下，不怕想法轉眼就忘。</p>
+      </div>
+      <div class="feature">
+        <h3>願望清單</h3>
+        <p>想看的書、電影、展覽都能記，上傳截圖或網址，標記已完成／已購買／未確認；上傳的圖片會自動轉成文字，不用手key。</p>
+      </div>
+    </div>
+
+    <div class="screens-block">
+      <p class="chart-title">App 實際畫面</p>
+      <div class="screens-grid">
+        <div class="screen-shot">
+          <img src="screenshots/shot-消費分析.png" alt="年度消費分析頁面，消費類型統計圓餅圖">
+          <p>年度消費分析</p>
+        </div>
+        <div class="screen-shot">
+          <img src="screenshots/shot-工時列表.png" alt="工時紀錄頁面，依月份列出各專案工作時數">
+          <p>工時紀錄</p>
+        </div>
+        <div class="screen-shot">
+          <img src="screenshots/shot-每月工時.png" alt="每月工時長條圖">
+          <p>每月工時趨勢</p>
+        </div>
+        <div class="screen-shot">
+          <img src="screenshots/shot-消費紀錄.png" alt="消費紀錄列表，依月份列出各筆花費與換算台幣金額">
+          <p>消費紀錄</p>
+        </div>
+        <div class="screen-shot">
+          <img src="screenshots/shot-待辦事項.png" alt="待辦事項列表，依死線排序，分進行中與已完成">
+          <p>待辦事項</p>
+        </div>
+        <div class="screen-shot">
+          <img src="screenshots/shot-專案列表.png" alt="專案列表，列出執行中專案的累積時數與實際時薪">
+          <p>專案列表</p>
+        </div>
+        <div class="screen-shot">
+          <img src="screenshots/shot-收入總表.png" alt="收入總表，依專案與工作月份列出金額">
+          <p>收入總表</p>
+        </div>
+      </div>
+      <p class="chart-caption">畫面中的專案名稱、金額、日期皆為測試資料，非真實接案紀錄。</p>
+    </div>
+
+    <div class="callout open">
+      <strong>目前狀態：</strong>開發完成，現正開放<strong>免費 2 週試用</strong>（台灣使用者優先）。填寫下方表單留下 email，
+      我們會盡快跟你聯繫、手動開通帳號。
+      <br><br>
+      這是由開發者自己的實際需求出發打造的工具，目前是試用版，也很需要大家使用後的回饋——
+      不管是覺得不順手的地方，還是希望增加的功能，都歡迎透過下方表單提供優化建議。
+      <strong>提供優化建議的前 10 名使用者，將保證至少可以免費使用到 2026 年底。</strong>
+      未來的正式售價還沒定案，目前預估落在每月 <strong>NT$100～300</strong> 之間；
+      若訂閱滿一年，會額外提供一次資料匯出協助，以及一次微型客製化服務。
+      <div class="cta-row">
+        <a class="cta-btn" href="https://forms.gle/rAVgQqkNyKosxfY8A" target="_blank" rel="noopener">先填表單登記試用 →</a>
+        <a class="cta-btn secondary" href="https://forms.gle/8Mr1hJ6CJBZRiJaQ7" target="_blank" rel="noopener">提供意見回饋 →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="product" id="poultry">
+  <div class="wrap">
+    <p class="eyebrow">Product 02 · 開發中</p>
+    <h2>白肉雞飼養紀錄</h2>
+    <div class="prose">
+      <p>
+        市面上找不到專門為白肉雞契約戶設計的獨立飼養紀錄工具——現有的數位工具多半是環控設備商附贈的系統，
+        跟著設備綁在一起，不是一個獨立、可以自己掌握資料的紀錄軟體。<strong>白肉雞飼養紀錄</strong>是專門給
+        <strong>養殖白肉雞的中小型個體戶</strong>（不含蛋雞）設計的紀錄工具，資料留在自己手上，不綁特定設備商。
+      </p>
+    </div>
+    <div class="feature-grid">
+      <div class="feature">
+        <h3>每日紀錄</h3>
+        <p>用水量、死雞與淘汰數量、飲水與用藥，每天花幾分鐘就能記完。</p>
+      </div>
+      <div class="feature">
+        <h3>批次結算</h3>
+        <p>一批雞出清後自動結算換肉率（FCR）與育成率，不用自己拿計算機算。</p>
+      </div>
+      <div class="feature">
+        <h3>分析圖表</h3>
+        <p>把每一批的數字畫成圖表，方便比較不同批次的表現、抓出下一批要調整的地方。</p>
+      </div>
+      <div class="feature">
+        <h3>資料留在自己手上</h3>
+        <p>不依附特定環控設備品牌，換設備、換系統都不會丟資料。</p>
+      </div>
+    </div>
+
+    <div class="chart-block">
+      <p class="chart-title">批次換肉率（FCR）趨勢 · 示意圖</p>
+      <svg viewBox="0 0 480 190" width="100%" height="190" role="img" aria-label="六個批次的換肉率示意趨勢，從1.78逐漸降到1.65，代表飼養效率逐批改善">
+        <g style="stroke: var(--chart-grid); stroke-width: 1;">
+          <line x1="30" y1="20" x2="30" y2="150" />
+          <line x1="30" y1="150" x2="460" y2="150" />
+        </g>
+        <polyline points="55,34 130,52 205,44 280,68 355,58 430,86"
+          style="fill:none; stroke: var(--moss); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round;" />
+        <g style="fill: var(--moss);">
+          <circle cx="55" cy="34" r="3.5" />
+          <circle cx="130" cy="52" r="3.5" />
+          <circle cx="205" cy="44" r="3.5" />
+          <circle cx="280" cy="68" r="3.5" />
+          <circle cx="355" cy="58" r="3.5" />
+          <circle cx="430" cy="86" r="5" />
+        </g>
+        <text x="430" y="72" text-anchor="middle" class="mono" style="font-size:12px; fill: var(--moss);">1.65</text>
+        <text x="55" y="20" text-anchor="middle" class="mono" style="font-size:11px; fill: var(--ink-muted);">1.78</text>
+        <g style="font-family:'Karla',sans-serif; font-size:11px; fill: var(--ink-muted);">
+          <text x="55" y="168" text-anchor="middle">批次1</text>
+          <text x="130" y="168" text-anchor="middle">批次2</text>
+          <text x="205" y="168" text-anchor="middle">批次3</text>
+          <text x="280" y="168" text-anchor="middle">批次4</text>
+          <text x="355" y="168" text-anchor="middle">批次5</text>
+          <text x="430" y="168" text-anchor="middle">批次6</text>
+        </g>
+      </svg>
+      <p class="chart-caption">數字為示意用途，非實際飼養資料——用來說明「看得到自己在進步」這件事。</p>
+    </div>
+
+    <p class="reference-note">
+      定位上參考國際上的 My Poultry Manager 這類養殖紀錄軟體，但鎖定台灣中南部的白肉雞契約戶（水簾式雞舍、
+      愛拔益加／樂斯等主力雞種），不是泛用的通用畜牧工具。開發者本人也有白肉雞場的第一線工作經驗——
+      巡過雞舍、看過死淘率怎麼被算出來，這個工具是從實際站在雞舍裡的角度設計的，不是憑空想像的軟體。
+    </p>
+    <div class="callout">
+      <strong>目前狀態：</strong>開發中，尚未開放試用或訂閱。想在上線時第一時間收到通知，歡迎<a href="#contact">來信</a>。
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <h2>關於 Understory</h2>
+    <div class="prose">
+      <p>
+        Understory 是 mengyahh 的作品與接案品牌。名字來自森林生態學裡樹冠層底下的那一層——擠著各種灌木、蕨類、幼苗，
+        沒有誰是唯一的主角，彼此交錯共生；拆開來看也是 <span class="mono">under + story</span>，事情底下的那層故事。
+      </p>
+      <p>
+        接案四年，做內容轉譯、文案撰寫、美編排版、動畫、攝影、剪輯、low-code 網站，服務過的對象橫跨社福組織的
+        個案管理系統、文化資產研究中心的政策論述、生態科普教材、地方文史平台，也接過稅務機關的政令宣導。
+        題材差很多，但做的事情其實很一致：站在「懂這件事的人」跟「需要用到這件事的人」中間，把落差填起來。
+        Understory 底下的產品，是同一個習慣的延伸——把容易被忽略的日常資料，
+        整理成看得懂、用得上的東西——不管是雞舍裡的數字，還是接案生活的收支。想看完整經歷，可以到
+        <a href="https://mengyahh.com/about">mengyahh.com 關於頁</a>。
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <h2>聯絡</h2>
+    <div class="prose">
+      <p>對這兩個工具有興趣、想合作，或單純想在上線時收到通知，都歡迎聯絡。</p>
+    </div>
+    <div class="contact-links">
+      <a href="mailto:mengyahh@gmail.com">mengyahh@gmail.com</a>
+      <a href="https://www.instagram.com/mengyahh">Instagram ↗</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>Understory · works by mengyahh</p>
+  </div>
+</footer>
+
+</body>
+</html>
