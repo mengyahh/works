@@ -72,9 +72,31 @@
   .topbar .wrap { display: flex; align-items: center; justify-content: space-between; padding: 16px 28px; max-width: 980px; }
   .topbar .wordmark { font-size: 20px; margin: 0; }
   .topbar .wordmark span { color: var(--sprout); }
-  .topnav { display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; }
-  .topnav a { font-family: "IBM Plex Mono", monospace; font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-soft); text-decoration: none; }
-  .topnav a:hover { color: var(--moss); }
+  .topnav { display: flex; align-items: center; gap: 22px; list-style: none; margin: 0; padding: 0; }
+  .topnav a, .topnav .sub-btn, .topnav .soon { font-family: "IBM Plex Mono", monospace; font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-soft); text-decoration: none; }
+  .topnav a:hover, .topnav .sub-btn:hover, .topnav .sub-btn[aria-expanded="true"] { color: var(--moss); }
+  .topnav .sub-btn { background: none; border: 0; padding: 0; cursor: pointer; }
+  .topnav .sub-btn .caret { display: inline-block; margin-left: 4px; font-size: 10px; transition: transform .2s ease; }
+  .topnav .sub-btn[aria-expanded="true"] .caret { transform: rotate(180deg); }
+  .topnav .has-sub { position: relative; }
+  .topnav .sub { display: none; position: absolute; top: calc(100% + 14px); left: -16px; min-width: 250px; list-style: none; margin: 0; padding: 8px 0; background: var(--bg); border: 1px solid var(--border-strong); border-radius: 6px; box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12); }
+  .topnav .sub.open { display: block; }
+  .topnav .sub a, .topnav .sub .soon { display: block; padding: 8px 18px; text-transform: none; letter-spacing: 0; font-family: "Karla", -apple-system, "Noto Sans TC", "PingFang TC", sans-serif; font-size: 14.5px; }
+  .topnav .sub a:hover { background: var(--chip-bg); }
+  .topnav .soon { color: var(--ink-muted); cursor: default; }
+  .topnav .soon em { font-style: normal; font-size: 10.5px; letter-spacing: 0.04em; margin-left: 8px; padding: 2px 8px; border-radius: 20px; background: var(--chip-bg); color: var(--moss); white-space: nowrap; }
+  .topbar .wordmark a { color: inherit; text-decoration: none; }
+  .menu-btn { display: none; font-family: "IBM Plex Mono", monospace; font-size: 12.5px; letter-spacing: 0.05em; color: var(--ink-soft); background: none; border: 1px solid var(--border-strong); border-radius: 20px; padding: 5px 14px; cursor: pointer; }
+  .topnav a:focus-visible, .sub-btn:focus-visible, .menu-btn:focus-visible { outline: 2px solid var(--moss); outline-offset: 3px; border-radius: 2px; }
+  @media (max-width: 860px) {
+    .topbar .wrap { flex-wrap: wrap; padding: 12px 28px; }
+    .menu-btn { display: inline-block; }
+    .topnav { display: none; width: 100%; flex-direction: column; align-items: flex-start; gap: 0; padding: 10px 0 6px; }
+    .topnav.open { display: flex; }
+    .topnav > li { width: 100%; padding: 10px 0; border-top: 1px solid var(--border); }
+    .topnav .sub { position: static; min-width: 0; margin-top: 6px; padding: 0 0 0 4px; border: 0; border-radius: 0; box-shadow: none; background: none; }
+    .topnav .sub a, .topnav .sub .soon { padding: 8px 12px; }
+  }
 
   .hero { padding: 68px 0 52px; border-bottom: 1px solid var(--border); }
   .eyebrow { font-family: "IBM Plex Mono", monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sprout); margin: 0 0 20px; }
@@ -138,7 +160,6 @@
 
   @media (max-width: 680px) {
     .teaser-row, .feature-grid { grid-template-columns: 1fr; }
-    .topnav { display: none; }
     .chart-row { flex-direction: column; align-items: flex-start; }
   }
 </style>
@@ -149,10 +170,20 @@
 
 <nav class="topbar">
   <div class="wrap">
-    <p class="wordmark">under<span>story</span></p>
-    <ul class="topnav">
-      <li><a href="#freelance">給自由工作者的生活工作管理大師</a></li>
-      <li><a href="#poultry">白肉雞App</a></li>
+    <p class="wordmark"><a href="./">under<span>story</span></a></p>
+    <button type="button" class="menu-btn" aria-expanded="false" aria-controls="menu">選單</button>
+    <ul class="topnav" id="menu">
+      <li class="has-sub">
+        <button type="button" class="sub-btn" aria-expanded="false" aria-haspopup="true" aria-controls="sub-appsheet">AppSheet 管理系統<span class="caret" aria-hidden="true">▾</span></button>
+        <ul class="sub" id="sub-appsheet">
+          <li><a href="#freelance">自由工作者套件</a></li>
+          <li><a href="#poultry">白肉雞養殖紀錄系統</a></li>
+          <li><span class="soon">個案管理系統<em>準備中</em></span></li>
+          <li><span class="soon">AppSheet 介紹<em>準備中</em></span></li>
+        </ul>
+      </li>
+      <li><span class="soon">文化工作<em>準備中</em></span></li>
+      <li><span class="soon">生態工作<em>準備中</em></span></li>
       <li><a href="#about">關於</a></li>
       <li><a href="#contact">聯絡</a></li>
     </ul>
@@ -384,5 +415,47 @@
   </div>
 </footer>
 
+<script>
+(function () {
+  var nav = document.getElementById('menu');
+  var menuBtn = document.querySelector('.menu-btn');
+  var subBtns = Array.prototype.slice.call(document.querySelectorAll('.sub-btn'));
+
+  function closeSubs(except) {
+    subBtns.forEach(function (b) {
+      var sub = document.getElementById(b.getAttribute('aria-controls'));
+      if (sub === except) return;
+      sub.classList.remove('open');
+      b.setAttribute('aria-expanded', 'false');
+    });
+  }
+  menuBtn.addEventListener('click', function () {
+    var open = nav.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  subBtns.forEach(function (b) {
+    var sub = document.getElementById(b.getAttribute('aria-controls'));
+    b.addEventListener('click', function (e) {
+      e.stopPropagation();
+      closeSubs(sub);
+      var open = sub.classList.toggle('open');
+      b.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.has-sub')) closeSubs();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { closeSubs(); nav.classList.remove('open'); menuBtn.setAttribute('aria-expanded', 'false'); }
+  });
+  nav.addEventListener('click', function (e) {              // picking a link closes the menus
+    if (e.target.closest('a')) {
+      closeSubs();
+      nav.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    }
+  });
+})();
+</script>
 </body>
 </html>
