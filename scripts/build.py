@@ -91,7 +91,7 @@ def nav_html(base, current):
     <button type="button" class="menu-btn" aria-expanded="false" aria-controls="menu">選單</button>
     <ul class="topnav" id="menu">
       <li class="has-sub">
-        <button type="button" class="sub-btn" aria-expanded="false" aria-haspopup="true" aria-controls="sub-appsheet">AppSheet 管理系統<span class="caret" aria-hidden="true">▾</span></button>
+        <button type="button" class="sub-btn" aria-expanded="false" aria-haspopup="true" aria-controls="sub-appsheet">AppSheet<span class="caret" aria-hidden="true">▾</span></button>
         <ul class="sub" id="sub-appsheet">
           <li><a href="{base}index.html#freelance">自由工作者套件</a></li>
           <li><a href="{base}index.html#poultry">白肉雞養殖紀錄系統</a></li>
@@ -99,8 +99,8 @@ def nav_html(base, current):
           <li><span class="soon">AppSheet 介紹<em>準備中</em></span></li>
         </ul>
       </li>
-      <li><span class="soon">文化工作<em>準備中</em></span></li>
-      <li><span class="soon">生態工作<em>準備中</em></span></li>
+      <li><span class="soon">活動企劃<em>準備中</em></span></li>
+      <li><span class="soon">挖掘在地<em>準備中</em></span></li>
       <li>{about}</li>
       <li><a href="{contact}">聯絡</a></li>
     </ul>
