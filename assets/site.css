@@ -1,3 +1,4 @@
+/* Understory: styles shared by about.html and the portfolio pages (edit here; the home page has its own inline styles) */
   :root {
     --bg: #FAF7EF;
     --surface: #F1EDE0;
@@ -73,9 +74,76 @@
   .hero h1 .ask { color: var(--moss); }
   .hero .lede { font-size: 16.5px; color: var(--ink-soft); max-width: 60ch; margin: 0; }
 
+  section.block { padding-block: 52px; border-bottom: 1px solid var(--border); scroll-margin-top: 64px; }
+  section.block h2 { font-size: 25px; margin: 0 0 12px; }
+  .intro { font-size: 15px; color: var(--ink-soft); max-width: 60ch; margin: 0 0 28px; }
+
+  .skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+  .skill { background: var(--bg); padding: 22px 22px 24px; display: flex; flex-direction: column; gap: 10px; }
+  .skill h3 { font-family: "Karla", "Noto Sans TC", sans-serif; font-size: 15.5px; font-weight: 700; color: var(--moss); margin: 0; }
+  .skill p { font-size: 13.5px; color: var(--ink-soft); margin: 0; line-height: 1.7; }
+  .skill dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 6px 12px; font-size: 13.5px; }
+  .skill dt { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12px; color: var(--clay); padding-top: 2px; }
+  .skill dd { margin: 0; color: var(--ink-soft); }
+  .skill .note { font-size: 12.5px; color: var(--ink-muted); border-top: 1px dashed var(--border-strong); padding-top: 10px; }
+  .fields { margin: 18px 0 0; font-size: 14px; color: var(--ink-soft); }
+  .fields strong { color: var(--ink); }
+
+  .tools { margin-top: 28px; padding-top: 22px; border-top: 1px dashed var(--border-strong); }
+  .tools h3 { font-family: "Karla", "Noto Sans TC", sans-serif; font-size: 15px; font-weight: 700; margin: 0 0 12px; color: var(--ink); }
+  .tools dl { margin: 0; display: grid; grid-template-columns: 7em 1fr; gap: 10px 16px; align-items: baseline; }
+  .tools dt { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12px; color: var(--clay); }
+  .tools dd { margin: 0; display: flex; flex-wrap: wrap; gap: 6px 8px; }
+  .tools dd span { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12.5px; color: var(--ink); border: 1px solid var(--border-strong); border-radius: 3px; padding: 1px 8px; }
+  .projects .head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; }
+  .plink { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12.5px; text-decoration: none; border-bottom: 1px solid var(--border-strong); align-self: flex-start; padding-bottom: 1px; }
+  .plink:hover { border-color: var(--moss); }
+  .projects { list-style: none; margin: 0; padding: 0; }
+  .projects li { display: grid; grid-template-columns: minmax(0, 27em) minmax(0, 1fr); align-items: start; gap: 24px; padding-block: 18px; border-top: 1px solid var(--border); }
+  .projects li:last-child { border-bottom: 1px solid var(--border); }
+  .projects .type { font-family: "Fraunces", "Noto Serif TC", serif; font-weight: 600; font-size: 16px; color: var(--ink); }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px 8px; }
+  .tags span { font-size: 13px; color: var(--ink-soft); background: var(--surface); border: 1px solid var(--border); border-radius: 3px; padding: 2px 9px; }
+  .after { margin: 20px 0 0; font-size: 14.5px; color: var(--ink-soft); max-width: 60ch; }
+
+  .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); counter-reset: step; }
+  .steps li { background: var(--bg); padding: 18px 16px 20px; display: flex; flex-direction: column; gap: 6px; counter-increment: step; }
+  .steps li::before { content: counter(step); font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12px; color: var(--sprout); }
+  .steps h3 { font-family: "Karla", "Noto Sans TC", sans-serif; font-size: 14.5px; font-weight: 700; margin: 0; color: var(--ink); }
+  .steps p { font-size: 13px; color: var(--ink-soft); margin: 0; line-height: 1.65; }
+  .diag { margin-top: 20px; font-size: 14px; color: var(--ink-soft); border-left: 2px solid var(--sprout); padding-left: 14px; max-width: 62ch; }
+
+  .why { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; max-width: 64ch; }
+  .why li { display: grid; grid-template-columns: 9em 1fr; gap: 16px; padding-bottom: 14px; border-bottom: 1px solid var(--border); }
+  .why li:last-child { border-bottom: 0; padding-bottom: 0; }
+  .why strong { color: var(--moss); font-size: 15px; }
+  .why span { font-size: 14.5px; color: var(--ink-soft); }
+
+  .name-note { font-size: 14px; color: var(--ink-muted); max-width: 62ch; margin: 0; }
+
+  .contact { padding-block: 52px 44px; }
+  .contact h2 { font-size: 25px; margin: 0 0 10px; }
+  .contact .lead { margin: 0 0 22px; color: var(--ink-soft); font-size: 15px; max-width: 58ch; }
+  .mailbox { display: inline-flex; align-items: center; gap: 12px; flex-wrap: wrap; padding: 12px 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; }
+  .mailbox .addr { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 15px; user-select: all; }
+  .mailbox button { font: 600 13px "Karla", "Noto Sans TC", sans-serif; color: var(--bg); background: var(--moss); border: 0; border-radius: 4px; padding: 6px 12px; cursor: pointer; }
+  .links { display: flex; gap: 24px; margin-top: 20px; flex-wrap: wrap; }
+  .links a { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 14px; text-decoration: none; border-bottom: 1px solid var(--border-strong); padding-bottom: 2px; }
+
+  footer { padding-block: 28px 56px; border-top: 1px solid var(--border); }
+  footer p { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12px; color: var(--ink-muted); margin: 0; }
+
+  @media (max-width: 760px) {
+    .steps { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 680px) {
+    .skills { grid-template-columns: 1fr; }
+    .projects li { grid-template-columns: 1fr; gap: 8px; }
+    .why li { grid-template-columns: 1fr; gap: 2px; }
+  }
   /* portfolio pages */
-  .wrap { max-width: 980px; }
-  .hero h1 { max-width: 24em; }
+  .pf-page .wrap { max-width: 980px; }
+  .pf-page .hero h1 { max-width: 24em; }
   .eyebrow a { color: inherit; text-decoration: none; }
   .eyebrow a:hover { text-decoration: underline; }
   section.pf { padding-block: 12px 24px; }
@@ -123,12 +191,3 @@
   .lb .prev { left: 10px; top: 50%; transform: translateY(-50%); }
   .lb .next { right: 10px; top: 50%; transform: translateY(-50%); }
   @media (max-width: 640px) { .lb .prev { left: 4px; } .lb .next { right: 4px; } }
-
-  .contact { padding-block: 52px 44px; }
-  .contact h2 { font-size: 25px; margin: 0 0 10px; }
-  .contact .lead { margin: 0 0 18px; color: var(--ink-soft); font-size: 15px; max-width: 58ch; }
-  .mailbox { display: inline-flex; align-items: center; gap: 14px; flex-wrap: wrap; padding: 12px 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; }
-  .mailbox .addr { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 15px; user-select: all; }
-  .mailbox a { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 13px; }
-  footer { padding-block: 28px 56px; border-top: 1px solid var(--border); }
-  footer p { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12px; color: var(--ink-muted); margin: 0; }
