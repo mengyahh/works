@@ -88,6 +88,9 @@
   .topbar .wordmark a { color: inherit; text-decoration: none; }
   .menu-btn { display: none; font-family: "IBM Plex Mono", monospace; font-size: 12.5px; letter-spacing: 0.05em; color: var(--ink-soft); background: none; border: 1px solid var(--border-strong); border-radius: 20px; padding: 5px 14px; cursor: pointer; }
   .topnav a:focus-visible, .sub-btn:focus-visible, .menu-btn:focus-visible { outline: 2px solid var(--moss); outline-offset: 3px; border-radius: 2px; }
+  @media (max-width: 760px) {
+    .offer { grid-template-columns: 1fr; }
+  }
   @media (max-width: 860px) {
     .topbar .wrap { flex-wrap: wrap; padding: 12px 28px; }
     .menu-btn { display: inline-block; }
@@ -102,6 +105,18 @@
   .eyebrow { font-family: "IBM Plex Mono", monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sprout); margin: 0 0 20px; }
   .hero h1 { font-size: clamp(32px, 5.2vw, 50px); line-height: 1.15; margin: 0 0 20px; max-width: 16ch; }
   .hero .lede { font-size: 17px; color: var(--ink-soft); max-width: 58ch; margin: 0; }
+  .offer { list-style: none; margin: 30px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+  .offer li { background: var(--bg); padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 6px; }
+  .offer strong { font-family: "Fraunces", "Noto Serif TC", Georgia, serif; font-size: 17px; font-weight: 600; color: var(--moss); }
+  .offer span { font-size: 13.5px; color: var(--ink-soft); line-height: 1.7; }
+  .cta { display: flex; flex-wrap: wrap; gap: 12px; margin: 26px 0 0; }
+  .btn { display: inline-block; padding: 10px 22px; border-radius: 4px; border: 1px solid var(--moss); background: var(--moss); color: var(--bg); font-size: 14.5px; font-weight: 700; text-decoration: none; }
+  .btn:hover { filter: brightness(1.1); }
+  .btn.ghost { background: transparent; color: var(--moss); }
+  .btn.ghost:hover { background: var(--chip-bg); filter: none; }
+  .prod-intro { padding: 56px 0 60px; border-bottom: 1px solid var(--border); scroll-margin-top: 64px; }
+  .prod-intro h2 { font-size: 30px; margin: 12px 0 14px; }
+  .prod-intro .lede { font-size: 16px; color: var(--ink-soft); max-width: 60ch; margin: 0; }
 
   .teaser-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 40px; }
   .teaser { background: var(--bg); padding: 24px 26px; text-decoration: none; display: block; }
@@ -195,6 +210,26 @@
     <p class="eyebrow">Understory · works by mengyahh</p>
     <h1>There's always an understory.</h1>
     <p class="lede">
+      我是 Meng Ya，接案 5 年的非典型自由工作者。先搞懂你的現場、找到真正的痛點，再決定做什麼、怎麼做——
+      從分析、規劃到製作，一個人接得起來。
+    </p>
+    <ul class="offer">
+      <li><strong>管理系統</strong><span>把容易被忽略的日常紀錄，整理成看得懂、用得上的資訊（AppSheet）。</span></li>
+      <li><strong>活動企劃</strong><span>市集與活動的企劃、辦理，連同社群圖文與輸出品的美編設計。</span></li>
+      <li><strong>地域宣傳</strong><span>文宣、手冊、主題網站與影片，把在地的故事說清楚。</span></li>
+    </ul>
+    <p class="cta">
+      <a class="btn" href="about.html">了解更多 →</a>
+      <a class="btn ghost" href="#contact">先來聊聊</a>
+    </p>
+  </div>
+</header>
+
+<section class="prod-intro" id="products">
+  <div class="wrap">
+    <p class="eyebrow">Products</p>
+    <h2>AppSheet 管理系統</h2>
+    <p class="lede">
       由 mengyahh 打造的小型數位工具。把容易被忽略、卻天天在發生的紀錄——雞舍裡的每一批數字、接案生活裡的工時與收支——
       整理成看得懂、用得上的資訊。目前有兩個進行中的專案：
     </p>
@@ -210,8 +245,7 @@
         <span class="status-chip">開發中</span>
       </a>
     </div>
-  </div>
-</header>
+</section>
 
 <section class="product" id="freelance">
   <div class="wrap">
@@ -381,10 +415,11 @@
     <h2>關於 Understory</h2>
     <div class="prose">
       <p>
-        林下層，灌木、蕨類、幼苗交錯共生，這裡雜亂同時生機無限。在這裡，有表層看不見的、說不完的故事。
+        在這裡，灌木、蕨類、幼苗交錯共生，這裡雜亂同時生機無限。<br>
+        在這裡，有表層看不見的、說不完的故事。
       </p>
       <p>
-        接案四年，做內容轉譯、文案撰寫、美編排版、動畫、攝影、剪輯、low-code 網站，服務過的對象橫跨社福組織的
+        接案五年，做內容轉譯、文案撰寫、美編排版、動畫、攝影、剪輯、low-code 網站，服務過的對象橫跨社福組織的
         個案管理系統、文化資產研究中心的政策論述、生態科普教材、地方文史平台，也接過稅務機關的政令宣導。
         題材差很多，但做的事情其實很一致：站在「懂這件事的人」跟「需要用到這件事的人」中間，把落差填起來。
         Understory 底下的產品，是同一個習慣的延伸——把容易被忽略的日常資料，
