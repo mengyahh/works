@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>關於 | Understory</title>
+<meta name="description" content="Meng Ya，接案 5 年的自由工作者。從調查、規劃到製作，一起做出管理系統、分析報告、活動企劃、出版品或手冊。">
+<style>body{margin:0}img{max-width:100%}</style>
+<style>
+  :root {
+    --bg: #FAF7EF;
+    --surface: #F1EDE0;
+    --ink: #23281F;
+    --ink-soft: #565C4C;
+    --ink-muted: #75725f;
+    --moss: #3B6748;
+    --sprout: #5E8443;
+    --clay: #97693D;
+    --border: rgba(35, 40, 31, 0.14);
+    --border-strong: rgba(35, 40, 31, 0.30);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --bg: #14180F; --surface: #1B2115; --ink: #EDE9DC; --ink-soft: #A9AF98; --ink-muted: #8a8f7c;
+      --moss: #9BC985; --sprout: #C7DC9E; --clay: #D6A96F;
+      --border: rgba(237, 233, 220, 0.14); --border-strong: rgba(237, 233, 220, 0.30);
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #14180F; --surface: #1B2115; --ink: #EDE9DC; --ink-soft: #A9AF98; --ink-muted: #8a8f7c;
+    --moss: #9BC985; --sprout: #C7DC9E; --clay: #D6A96F;
+    --border: rgba(237, 233, 220, 0.14); --border-strong: rgba(237, 233, 220, 0.30);
+  }
+
+  * { box-sizing: border-box; }
+  body { background: var(--bg); color: var(--ink); font-family: "Karla", -apple-system, "Noto Sans TC", "PingFang TC", sans-serif; line-height: 1.75; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3, .wordmark { font-family: "Fraunces", "Noto Serif TC", Georgia, serif; text-wrap: balance; font-weight: 600; letter-spacing: -0.01em; color: var(--ink); }
+  .mono { font-family: "IBM Plex Mono", ui-monospace, monospace; }
+  a { color: var(--moss); }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--moss); outline-offset: 3px; }
+  .wrap { max-width: 900px; margin: 0 auto; padding-inline: 24px; }
+
+  .topbar { position: sticky; top: 0; z-index: 5; background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--border); }
+  .topbar .wrap { display: flex; align-items: center; justify-content: space-between; padding: 16px 28px; max-width: 980px; }
+  .topbar .wordmark { font-size: 20px; margin: 0; }
+  .topbar .wordmark span { color: var(--sprout); }
+  .topnav { display: flex; align-items: center; gap: 22px; list-style: none; margin: 0; padding: 0; }
+  .topnav a, .topnav .sub-btn, .topnav .soon { font-family: "IBM Plex Mono", monospace; font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-soft); text-decoration: none; }
+  .topnav a:hover, .topnav .sub-btn:hover, .topnav .sub-btn[aria-expanded="true"] { color: var(--moss); }
+  .topnav .sub-btn { background: none; border: 0; padding: 0; cursor: pointer; }
+  .topnav .sub-btn .caret { display: inline-block; margin-left: 4px; font-size: 10px; transition: transform .2s ease; }
+  .topnav .sub-btn[aria-expanded="true"] .caret { transform: rotate(180deg); }
+  .topnav .has-sub { position: relative; }
+  .topnav .sub { display: none; position: absolute; top: calc(100% + 14px); left: -16px; min-width: 250px; list-style: none; margin: 0; padding: 8px 0; background: var(--bg); border: 1px solid var(--border-strong); border-radius: 6px; box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12); }
+  .topnav .sub.open { display: block; }
+  .topnav .sub a, .topnav .sub .soon { display: block; padding: 8px 18px; text-transform: none; letter-spacing: 0; font-family: "Karla", -apple-system, "Noto Sans TC", "PingFang TC", sans-serif; font-size: 14.5px; }
+  .topnav .sub a:hover { background: var(--chip-bg); }
+  .topnav .soon { color: var(--ink-muted); cursor: default; }
+  .topnav .soon em { font-style: normal; font-size: 10.5px; letter-spacing: 0.04em; margin-left: 8px; padding: 2px 8px; border-radius: 20px; background: var(--chip-bg); color: var(--moss); white-space: nowrap; }
+  .topbar .wordmark a { color: inherit; text-decoration: none; }
+  .menu-btn { display: none; font-family: "IBM Plex Mono", monospace; font-size: 12.5px; letter-spacing: 0.05em; color: var(--ink-soft); background: none; border: 1px solid var(--border-strong); border-radius: 20px; padding: 5px 14px; cursor: pointer; }
+  .topnav a:focus-visible, .sub-btn:focus-visible, .menu-btn:focus-visible { outline: 2px solid var(--moss); outline-offset: 3px; border-radius: 2px; }
+  @media (max-width: 860px) {
+    .topbar .wrap { flex-wrap: wrap; padding: 12px 28px; }
+    .menu-btn { display: inline-block; }
+    .topnav { display: none; width: 100%; flex-direction: column; align-items: flex-start; gap: 0; padding: 10px 0 6px; }
+    .topnav.open { display: flex; }
+    .topnav > li { width: 100%; padding: 10px 0; border-top: 1px solid var(--border); }
+    .topnav .sub { position: static; min-width: 0; margin-top: 6px; padding: 0 0 0 4px; border: 0; border-radius: 0; box-shadow: none; background: none; }
+    .topnav .sub a, .topnav .sub .soon { padding: 8px 12px; }
+  }
+  .topnav a[aria-current="page"] { color: var(--moss); }
+
+  .eyebrow, .kicker { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12px; letter-spacing: 0.12em; margin: 0 0 14px; }
+  .eyebrow { color: var(--sprout); }
+  .kicker { color: var(--clay); }
+
+  .hero { padding-block: 60px 48px; border-bottom: 1px solid var(--border); }
+  .hero h1 { font-size: clamp(26px, 4.4vw, 40px); line-height: 1.35; margin: 0 0 26px; max-width: 22em; }
+  .hero h1 .ask { color: var(--moss); }
+  .hero .lede { font-size: 16.5px; color: var(--ink-soft); max-width: 60ch; margin: 0; }
+
+  section.block { padding-block: 52px; border-bottom: 1px solid var(--border); scroll-margin-top: 64px; }
+  section.block h2 { font-size: 25px; margin: 0 0 12px; }
+  .intro { font-size: 15px; color: var(--ink-soft); max-width: 60ch; margin: 0 0 28px; }
+
+  .skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+  .skill { background: var(--bg); padding: 22px 22px 24px; display: flex; flex-direction: column; gap: 10px; }
+  .skill h3 { font-family: "Karla", "Noto Sans TC", sans-serif; font-size: 15.5px; font-weight: 700; color: var(--moss); margin: 0; }
+  .skill p { font-size: 13.5px; color: var(--ink-soft); margin: 0; line-height: 1.7; }
+  .skill dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 6px 12px; font-size: 13.5px; }
+  .skill dt { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12px; color: var(--clay); padding-top: 2px; }
+  .skill dd { margin: 0; color: var(--ink-soft); }
+  .skill .note { font-size: 12.5px; color: var(--ink-muted); border-top: 1px dashed var(--border-strong); padding-top: 10px; }
+  .fields { margin: 18px 0 0; font-size: 14px; color: var(--ink-soft); }
+  .fields strong { color: var(--ink); }
+
+  .tools { margin-top: 28px; padding-top: 22px; border-top: 1px dashed var(--border-strong); }
+  .tools h3 { font-family: "Karla", "Noto Sans TC", sans-serif; font-size: 15px; font-weight: 700; margin: 0 0 12px; color: var(--ink); }
+  .tools dl { margin: 0; display: grid; grid-template-columns: 7em 1fr; gap: 10px 16px; align-items: baseline; }
+  .tools dt { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12px; color: var(--clay); }
+  .tools dd { margin: 0; display: flex; flex-wrap: wrap; gap: 6px 8px; }
+  .tools dd span { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12.5px; color: var(--ink); border: 1px solid var(--border-strong); border-radius: 3px; padding: 1px 8px; }
+  .projects .head { display: flex; flex-direction: column; gap: 4px; }
+  .plink { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12.5px; text-decoration: none; border-bottom: 1px solid var(--border-strong); align-self: flex-start; padding-bottom: 1px; }
+  .plink:hover { border-color: var(--moss); }
+  .projects { list-style: none; margin: 0; padding: 0; }
+  .projects li { display: grid; grid-template-columns: minmax(0, 16em) minmax(0, 1fr); gap: 24px; padding-block: 18px; border-top: 1px solid var(--border); }
+  .projects li:last-child { border-bottom: 1px solid var(--border); }
+  .projects .type { font-family: "Fraunces", "Noto Serif TC", serif; font-weight: 600; font-size: 16px; color: var(--ink); }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px 8px; }
+  .tags span { font-size: 13px; color: var(--ink-soft); background: var(--surface); border: 1px solid var(--border); border-radius: 3px; padding: 2px 9px; }
+  .after { margin: 20px 0 0; font-size: 14.5px; color: var(--ink-soft); max-width: 60ch; }
+
+  .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); counter-reset: step; }
+  .steps li { background: var(--bg); padding: 18px 16px 20px; display: flex; flex-direction: column; gap: 6px; counter-increment: step; }
+  .steps li::before { content: counter(step); font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12px; color: var(--sprout); }
+  .steps h3 { font-family: "Karla", "Noto Sans TC", sans-serif; font-size: 14.5px; font-weight: 700; margin: 0; color: var(--ink); }
+  .steps p { font-size: 13px; color: var(--ink-soft); margin: 0; line-height: 1.65; }
+  .diag { margin-top: 20px; font-size: 14px; color: var(--ink-soft); border-left: 2px solid var(--sprout); padding-left: 14px; max-width: 62ch; }
+
+  .why { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; max-width: 64ch; }
+  .why li { display: grid; grid-template-columns: 9em 1fr; gap: 16px; padding-bottom: 14px; border-bottom: 1px solid var(--border); }
+  .why li:last-child { border-bottom: 0; padding-bottom: 0; }
+  .why strong { color: var(--moss); font-size: 15px; }
+  .why span { font-size: 14.5px; color: var(--ink-soft); }
+
+  .name-note { font-size: 14px; color: var(--ink-muted); max-width: 62ch; margin: 0; }
+
+  .contact { padding-block: 52px 44px; }
+  .contact h2 { font-size: 25px; margin: 0 0 10px; }
+  .contact .lead { margin: 0 0 22px; color: var(--ink-soft); font-size: 15px; max-width: 58ch; }
+  .mailbox { display: inline-flex; align-items: center; gap: 12px; flex-wrap: wrap; padding: 12px 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; }
+  .mailbox .addr { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 15px; user-select: all; }
+  .mailbox button { font: 600 13px "Karla", "Noto Sans TC", sans-serif; color: var(--bg); background: var(--moss); border: 0; border-radius: 4px; padding: 6px 12px; cursor: pointer; }
+  .links { display: flex; gap: 24px; margin-top: 20px; flex-wrap: wrap; }
+  .links a { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 14px; text-decoration: none; border-bottom: 1px solid var(--border-strong); padding-bottom: 2px; }
+
+  footer { padding-block: 28px 56px; border-top: 1px solid var(--border); }
+  footer p { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12px; color: var(--ink-muted); margin: 0; }
+
+  @media (max-width: 760px) {
+    .steps { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 680px) {
+    .skills { grid-template-columns: 1fr; }
+    .projects li { grid-template-columns: 1fr; gap: 8px; }
+    .why li { grid-template-columns: 1fr; gap: 2px; }
+  }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Karla:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+</head>
+<body>
+<nav class="topbar">
+  <div class="wrap">
+    <p class="wordmark"><a href="index.html">under<span>story</span></a></p>
+    <button type="button" class="menu-btn" aria-expanded="false" aria-controls="menu">選單</button>
+    <ul class="topnav" id="menu">
+      <li class="has-sub">
+        <button type="button" class="sub-btn" aria-expanded="false" aria-haspopup="true" aria-controls="sub-appsheet">AppSheet 管理系統<span class="caret" aria-hidden="true">▾</span></button>
+        <ul class="sub" id="sub-appsheet">
+          <li><a href="index.html#freelance">自由工作者套件</a></li>
+          <li><a href="index.html#poultry">白肉雞養殖紀錄系統</a></li>
+          <li><span class="soon">個案管理系統<em>準備中</em></span></li>
+          <li><span class="soon">AppSheet 介紹<em>準備中</em></span></li>
+        </ul>
+      </li>
+      <li><span class="soon">文化工作<em>準備中</em></span></li>
+      <li><span class="soon">生態工作<em>準備中</em></span></li>
+      <li><a href="about.html" aria-current="page">關於</a></li>
+      <li><a href="#contact">聯絡</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="about">
+  <div class="wrap">
+    <p class="eyebrow">關於 Understory</p>
+    <h1>一套管理系統、一份分析報告、一套活動企劃、一本出版品或手冊，<span class="ask">你缺的是什麼？我們一起做吧！</span></h1>
+    <p class="lede">我是 Meng Ya，接案 5 年的自由工作者。以拆解問題、調查研究、邏輯思考為核心，結合跨領域的知識與技能，提供整合性的服務。具體產出包含管理系統、分析報告、活動企劃與辦理、出版品或手冊，也能延伸成主題網站、AI Agent 工作夥伴等數位工具。</p>
+  </div>
+</header>
+
+<section class="block" id="skills">
+  <div class="wrap">
+    <p class="kicker">能力</p>
+    <h2>咦？你會做什麼？你能做什麼呢？</h2>
+    <p class="intro">從調查、規劃到製作，一個人就能接得起來。能管理、能企劃，也能動手執行。</p>
+    <div class="skills">
+      <div class="skill">
+        <h3>調查研究</h3>
+        <p>田野調查、研究分析、文獻蒐集、資料彙整、講座與會議摘要</p>
+      </div>
+      <div class="skill">
+        <h3>規劃管理</h3>
+        <p>企劃、專案管理、活動辦理</p>
+        <p class="note">曾任政策與知識推廣類政府標案的專案經理（PM）</p>
+      </div>
+      <div class="skill">
+        <h3>製作</h3>
+        <dl>
+          <dt>文字</dt><dd>文案撰寫與編輯</dd>
+          <dt>視覺</dt><dd>美編與排版設計、攝影</dd>
+          <dt>影音</dt><dd>MG 動畫製作、影片剪輯</dd>
+          <dt>數位</dt><dd>系統製作、網站製作、API 串接與 LINE 機器人、AI 訓練</dd>
+        </dl>
+      </div>
+    </div>
+    <p class="fields">合作單位與專案多半與<strong>人文歷史、生態環境、政策、非營利組織</strong>有關。</p>
+
+    <div class="tools">
+      <h3>常用工具</h3>
+      <dl>
+        <dt>設計排版</dt><dd><span>Illustrator</span><span>InDesign</span><span>PowerPoint</span></dd>
+        <dt>影音</dt><dd><span>Premiere</span><span>After Effects</span></dd>
+        <dt>網站</dt><dd><span>Google Sites</span><span>Wix</span><span>GitHub</span><span>網域與 DNS 設定</span></dd>
+        <dt>系統與串接</dt><dd><span>AppSheet</span><span>Google Apps Script</span><span>API 串接</span><span>LINE 機器人</span></dd>
+        <dt>AI</dt><dd><span>Claude</span><span>NotebookLM</span></dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="projects">
+  <div class="wrap">
+    <p class="kicker">專案類型</p>
+    <h2>做過什麼樣的專案</h2>
+    <p class="intro">每一種專案，負責的工作都不只一項。</p>
+    <ul class="projects">
+      <li><span class="head"><span class="type">政策與知識推廣類政府標案</span></span><span class="tags"><span>企劃提案</span><span>專案管理</span><span>溝通窗口</span></span></li>
+      <li><span class="head"><span class="type">陪伴組織數位轉型</span></span><span class="tags"><span>數位思維培力</span><span>官方網站製作</span></span></li>
+      <li><span class="head"><span class="type">非營利組織官網製作</span><a class="plink" href="https://www.thstaiwanheritage.org.tw/">看網站 ↗</a></span><span class="tags"><span>網域購買與 DNS 設定</span><span>視覺設計</span><span>網站製作</span><span>資料移轉</span></span></li>
+      <li><span class="head"><span class="type">資安手冊製作</span><a class="plink" href="https://www.xn--npo-0i3er88a2jlth5e.tw/">看網頁版 ↗</a></span><span class="tags"><span>內容編寫（AI 協作）</span><span>配圖美編</span><span>排版製作</span><span>網頁版製作</span></span></li>
+      <li><span class="head"><span class="type">文化政策內容累積與推廣</span><a class="plink" href="https://twculturalroute.boch.gov.tw/home/zh-tw">看網站 ↗</a></span><span class="tags"><span>文化政策理論轉譯</span><span>活動攝影</span><span>影片剪輯</span><span>美編設計</span></span></li>
+      <li><span class="head"><span class="type">區域流域的歷史與產業發展研究</span></span><span class="tags"><span>文獻蒐集</span><span>資料彙整</span><span>主題講座與會議摘要</span></span></li>
+      <li><span class="head"><span class="type">市集辦理執行</span><a class="plink" href="index.html#portfolio-lecheng">看作品集：樂城生活節 →</a></span><span class="tags"><span>企劃</span><span>攤位品牌聯繫與管理</span><span>社群圖文製作</span><span>輸出品美編設計</span></span></li>
+      <li><span class="head"><span class="type">溪流議題內容製作</span><a class="plink" href="https://watereeft.wixsite.com/streamhabitat">看網站 ↗</a></span><span class="tags"><span>教材簡報</span><span>主題網站</span><span>影片製作與剪輯</span><span>社群圖文</span><span>現場活動助教</span><span>校園課程帶領</span></span></li>
+    </ul>
+    <p class="after">不確定自己缺的是哪一種也沒關係。資料看不懂、流程很亂、活動還沒頭緒、想說的說不清楚，都可以先來聊聊。很多時候聊完才會發現，真正需要的跟原本以為的不一樣。</p>
+  </div>
+</section>
+
+<section class="block" id="process">
+  <div class="wrap">
+    <p class="kicker">合作方式</p>
+    <h2>我們怎麼一起做</h2>
+    <p class="intro">先搞懂，再動手。</p>
+    <ol class="steps">
+      <li><h3>先聊聊</h3><p>30 分鐘免費初談，說說你遇到什麼。</p></li>
+      <li><h3>進到現場</h3><p>訪談相關的人、觀察實際怎麼做、看手上的資料。</p></li>
+      <li><h3>理出框架</h3><p>把問題排出優先順序，一起決定做什麼、做到什麼程度。</p></li>
+      <li><h3>一起做出來</h3><p>過程中隨時看進度、隨時調整。</p></li>
+      <li><h3>交到你手上</h3><p>確認你們自己用得下去，不會我一離開就停。</p></li>
+    </ol>
+    <p class="diag">只想先把問題理清楚？可以單獨委託第 2、3 步的「現場診斷」，拿到現況整理、問題排序和建議方向，再決定下一步。</p>
+  </div>
+</section>
+
+<section class="block" id="why">
+  <div class="wrap">
+    <p class="kicker">為什麼找我</p>
+    <h2>跟一個人合作，從頭做到尾</h2>
+    <ul class="why">
+      <li><strong>先進現場</strong><span>先搞懂你怎麼做事，再談要做什麼，不拿現成的套版硬套。</span></li>
+      <li><strong>講台語</strong><span>長輩、農民、在地團體都聊得來，真實的想法才聽得到。</span></li>
+      <li><strong>同一個人負責</strong><span>調查、規劃、製作不用換手，你不必對不同的人重複說明。</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="block" id="name" style="border-bottom:none; padding-bottom: 8px;">
+  <div class="wrap">
+    <p class="kicker">名字的由來</p>
+    <p class="name-note">Understory 是森林裡樹冠層底下的那一層，灌木、蕨類、幼苗交錯共生。拆開來看也是 <span class="mono">under + story</span>：事情底下的那層故事。There's always an understory.</p>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <h2>先來聊聊吧</h2>
+    <p class="lead">說說你遇到的狀況，我們再一起決定要做什麼。</p>
+    <div class="mailbox">
+      <span class="addr" id="addr">mengyahh@gmail.com</span>
+      <button type="button" id="copy">複製 email</button>
+    </div>
+    <div class="links">
+      <a href="https://www.instagram.com/mengyahh">Instagram ↗</a>
+      <a href="https://mengyahh.com">mengyahh.com ↗</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap"><p>Understory · works by mengyahh</p></div>
+</footer>
+
+<script>
+(function () {
+  var nav = document.getElementById('menu');
+  var menuBtn = document.querySelector('.menu-btn');
+  var subBtns = Array.prototype.slice.call(document.querySelectorAll('.sub-btn'));
+
+  function closeSubs(except) {
+    subBtns.forEach(function (b) {
+      var sub = document.getElementById(b.getAttribute('aria-controls'));
+      if (sub === except) return;
+      sub.classList.remove('open');
+      b.setAttribute('aria-expanded', 'false');
+    });
+  }
+  menuBtn.addEventListener('click', function () {
+    var open = nav.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  subBtns.forEach(function (b) {
+    var sub = document.getElementById(b.getAttribute('aria-controls'));
+    b.addEventListener('click', function (e) {
+      e.stopPropagation();
+      closeSubs(sub);
+      var open = sub.classList.toggle('open');
+      b.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.has-sub')) closeSubs();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { closeSubs(); nav.classList.remove('open'); menuBtn.setAttribute('aria-expanded', 'false'); }
+  });
+  nav.addEventListener('click', function (e) {              // picking a link closes the menus
+    if (e.target.closest('a')) {
+      closeSubs();
+      nav.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    }
+  });
+})();
+</script>
+
+<script>
+  document.getElementById('copy').addEventListener('click', function () {
+    var btn = this, text = document.getElementById('addr').textContent;
+    function done(msg) { btn.textContent = msg; setTimeout(function () { btn.textContent = '複製 email'; }, 1800); }
+    function fallback() {
+      var r = document.createRange(); r.selectNodeContents(document.getElementById('addr'));
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); done('已選取，請按複製');
+    }
+    try {
+      navigator.clipboard.writeText(text).then(function () { done('已複製'); }, fallback);
+    } catch (e) { fallback(); }
+  });
+</script>
+
+</body>
+</html>
