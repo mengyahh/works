@@ -103,11 +103,11 @@
   .tools dt { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12px; color: var(--clay); }
   .tools dd { margin: 0; display: flex; flex-wrap: wrap; gap: 6px 8px; }
   .tools dd span { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12.5px; color: var(--ink); border: 1px solid var(--border-strong); border-radius: 3px; padding: 1px 8px; }
-  .projects .head { display: flex; flex-direction: column; gap: 4px; }
+  .projects .head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; }
   .plink { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12.5px; text-decoration: none; border-bottom: 1px solid var(--border-strong); align-self: flex-start; padding-bottom: 1px; }
   .plink:hover { border-color: var(--moss); }
   .projects { list-style: none; margin: 0; padding: 0; }
-  .projects li { display: grid; grid-template-columns: minmax(0, 16em) minmax(0, 1fr); gap: 24px; padding-block: 18px; border-top: 1px solid var(--border); }
+  .projects li { display: grid; grid-template-columns: minmax(0, 27em) minmax(0, 1fr); align-items: start; gap: 24px; padding-block: 18px; border-top: 1px solid var(--border); }
   .projects li:last-child { border-bottom: 1px solid var(--border); }
   .projects .type { font-family: "Fraunces", "Noto Serif TC", serif; font-weight: 600; font-size: 16px; color: var(--ink); }
   .tags { display: flex; flex-wrap: wrap; gap: 6px 8px; }
@@ -188,12 +188,12 @@
 <section class="block" id="skills">
   <div class="wrap">
     <p class="kicker">能力</p>
-    <h2>咦？你會做什麼？你能做什麼呢？</h2>
+    <h2>具體會什麼、能做什麼</h2>
     <p class="intro">從調查、規劃到製作，一個人就能接得起來。能管理、能企劃，也能動手執行。</p>
     <div class="skills">
       <div class="skill">
         <h3>調查研究</h3>
-        <p>田野調查、研究分析、文獻蒐集、資料彙整、講座與會議摘要</p>
+        <p>田野調查、文獻蒐集、研究分析</p>
       </div>
       <div class="skill">
         <h3>規劃管理</h3>
@@ -233,14 +233,14 @@
     <ul class="projects">
       <li><span class="head"><span class="type">政策與知識推廣類政府標案</span></span><span class="tags"><span>企劃提案</span><span>專案管理</span><span>溝通窗口</span></span></li>
       <li><span class="head"><span class="type">陪伴組織數位轉型</span></span><span class="tags"><span>數位思維培力</span><span>官方網站製作</span></span></li>
-      <li><span class="head"><span class="type">非營利組織官網製作</span><a class="plink" href="https://www.thstaiwanheritage.org.tw/">看網站 ↗</a></span><span class="tags"><span>網域購買與 DNS 設定</span><span>視覺設計</span><span>網站製作</span><span>資料移轉</span></span></li>
-      <li><span class="head"><span class="type">資安手冊製作</span><a class="plink" href="https://www.xn--npo-0i3er88a2jlth5e.tw/">看網頁版 ↗</a></span><span class="tags"><span>內容編寫（AI 協作）</span><span>配圖美編</span><span>排版製作</span><span>網頁版製作</span></span></li>
-      <li><span class="head"><span class="type">文化政策內容累積與推廣</span><a class="plink" href="https://twculturalroute.boch.gov.tw/home/zh-tw">看網站 ↗</a></span><span class="tags"><span>文化政策理論轉譯</span><span>活動攝影</span><span>影片剪輯</span><span>美編設計</span></span></li>
+      <li><span class="head"><span class="type">非營利組織官網製作</span><a class="plink" href="https://www.thstaiwanheritage.org.tw/">台灣文化資產學會 ↗</a></span><span class="tags"><span>網域購買與 DNS 設定</span><span>視覺設計</span><span>網站製作</span><span>資料移轉</span></span></li>
+      <li><span class="head"><span class="type">資安手冊製作</span><a class="plink" href="https://www.xn--npo-0i3er88a2jlth5e.tw/">非營利組織資訊安全素養指南 ↗</a></span><span class="tags"><span>內容編寫（AI 協作）</span><span>配圖美編</span><span>排版製作</span><span>網頁版製作</span></span></li>
+      <li><span class="head"><span class="type">文化政策內容累積與推廣</span><a class="plink" href="https://twculturalroute.boch.gov.tw/home/zh-tw">文化路徑 ↗</a></span><span class="tags"><span>文化政策理論轉譯</span><span>活動攝影</span><span>影片剪輯</span><span>美編設計</span></span></li>
       <li><span class="head"><span class="type">區域流域的歷史與產業發展研究</span></span><span class="tags"><span>文獻蒐集</span><span>資料彙整</span><span>主題講座與會議摘要</span></span></li>
-      <li><span class="head"><span class="type">市集辦理執行</span><a class="plink" href="https://mengyahh.com/portfolio/lecheng/">看作品集：樂城生活節 ↗</a></span><span class="tags"><span>企劃</span><span>攤位品牌聯繫與管理</span><span>社群圖文製作</span><span>輸出品美編設計</span></span></li>
-      <li><span class="head"><span class="type">溪流議題內容製作</span><a class="plink" href="https://mengyahh.com/portfolio/daodu-hexi/">看作品集：島讀河溪 ↗</a></span><span class="tags"><span>教材簡報</span><span>主題網站</span><span>影片製作與剪輯</span><span>社群圖文</span><span>現場活動助教</span><span>校園課程帶領</span></span></li>
+      <li><span class="head"><span class="type">市集辦理執行</span><a class="plink" href="portfolio/lecheng/">樂城生活節 →</a></span><span class="tags"><span>企劃</span><span>攤位品牌聯繫與管理</span><span>社群圖文製作</span><span>輸出品美編設計</span></span></li>
+      <li><span class="head"><span class="type">溪流議題內容製作</span><a class="plink" href="portfolio/daodu-hexi/">島讀河溪 →</a></span><span class="tags"><span>教材簡報</span><span>主題網站</span><span>影片製作與剪輯</span><span>社群圖文</span><span>現場活動助教</span><span>校園課程帶領</span></span></li>
     </ul>
-    <p class="after">不確定自己缺的是哪一種也沒關係。資料看不懂、流程很亂、活動還沒頭緒、想說的說不清楚，都可以先來聊聊。很多時候聊完才會發現，真正需要的跟原本以為的不一樣。</p>
+    <p class="after">不確定自己想要的是什麼也沒關係，可以先聊聊，我可以提參考方案給你靈感。很多時候聊完才會發現，真正需要的跟原本以為的不一樣。</p>
   </div>
 </section>
 
@@ -251,12 +251,12 @@
     <p class="intro">先搞懂，再動手。</p>
     <ol class="steps">
       <li><h3>先聊聊</h3><p>30 分鐘免費初談，說說你遇到什麼。</p></li>
-      <li><h3>進到現場</h3><p>訪談相關的人、觀察實際怎麼做、看手上的資料。</p></li>
+      <li><h3>進到現場</h3><p>觀察實際怎麼做、看手上的資料、訪談相關的人。</p></li>
       <li><h3>理出框架</h3><p>把問題排出優先順序，一起決定做什麼、做到什麼程度。</p></li>
-      <li><h3>一起做出來</h3><p>過程中隨時看進度、隨時調整。</p></li>
-      <li><h3>交到你手上</h3><p>確認你們自己用得下去，不會我一離開就停。</p></li>
+      <li><h3>一起做出來</h3><p>不是全部放心交給我就行，也需要你協助和想法，你是比我更了解自己的人。</p></li>
+      <li><h3>交到你手上</h3><p>我不喜歡浪費，我喜歡東西可以被喜歡、被使用，可以真的有所幫助。</p></li>
     </ol>
-    <p class="diag">只想先把問題理清楚？可以單獨委託第 2、3 步的「現場診斷」，拿到現況整理、問題排序和建議方向，再決定下一步。</p>
+    <p class="diag">只是想把問題理清楚也行！可以單獨委託第 2、3 步的評估與診斷，有時可能發現窒礙難行、需要再調整目標方向，有時可能發現是我做不了的，那也可以沒關係，就交給其他專業人員來吧！或許我也可以推薦給你其他專業夥伴哦！</p>
   </div>
 </section>
 
