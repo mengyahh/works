@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Understory · works by mengyahh</title>
-<meta name="description" content="Understory 是 mengyahh 的作品與接案品牌：給自由工作者的生活工作管理大師、白肉雞飼養紀錄——把容易被忽略的日常紀錄，整理成看得懂、用得上的工具。">
+<meta name="description" content="Understory 是 mengyahh 的作品與接案品牌：給自由工作者的生活工作管理大師、白肉雞飼養紀錄系統——把容易被忽略的日常紀錄，整理成看得懂、用得上的工具。">
 <style>
   :root {
     color-scheme: light;
@@ -144,8 +144,6 @@
     .screens-grid { grid-template-columns: repeat(2, 1fr); }
   }
 
-  .chart-block { border: 1px solid var(--border); border-radius: 4px; padding: 24px 26px; margin: 30px 0; background: var(--surface); }
-  .chart-block .chart-title { font-family: "IBM Plex Mono", monospace; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-soft); margin: 0 0 18px; }
   .chart-caption { font-size: 11.5px; color: var(--ink-muted); margin: 14px 0 0; font-style: italic; }
   .chart-row { display: flex; gap: 32px; align-items: center; flex-wrap: wrap; }
   .legend { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
@@ -192,7 +190,7 @@
         <button type="button" class="sub-btn" aria-expanded="false" aria-haspopup="true" aria-controls="sub-appsheet">AppSheet<span class="caret" aria-hidden="true">▾</span></button>
         <ul class="sub" id="sub-appsheet">
           <li><a href="#freelance">自由工作者套件</a></li>
-          <li><a href="#poultry">白肉雞養殖紀錄系統</a></li>
+          <li><a href="#poultry">白肉雞飼養紀錄系統</a></li>
           <li><span class="soon">個案管理系統<em>準備中</em></span></li>
           <li><span class="soon">AppSheet 介紹<em>準備中</em></span></li>
         </ul>
@@ -240,7 +238,7 @@
         <span class="status-chip open">開放試用中</span>
       </a>
       <a class="teaser" href="#poultry">
-        <p class="tname">白肉雞飼養紀錄</p>
+        <p class="tname">白肉雞飼養紀錄系統</p>
         <p>給中小型契約戶的每日養殖紀錄與換肉率分析</p>
         <span class="status-chip">開發中</span>
       </a>
@@ -341,11 +339,10 @@
 <section class="product" id="poultry">
   <div class="wrap">
     <p class="eyebrow">Product 02 · 開發中</p>
-    <h2>白肉雞飼養紀錄</h2>
+    <h2>白肉雞飼養紀錄系統</h2>
     <div class="prose">
       <p>
-        市面上找不到專門為白肉雞契約戶設計的獨立飼養紀錄工具——現有的數位工具多半是環控設備商附贈的系統，
-        跟著設備綁在一起，不是一個獨立、可以自己掌握資料的紀錄軟體。<strong>白肉雞飼養紀錄</strong>是專門給
+        <strong>白肉雞飼養紀錄系統</strong>是專門給
         <strong>養殖白肉雞的中小型個體戶</strong>（不含蛋雞）設計的紀錄工具，資料留在自己手上，不綁特定設備商。
       </p>
     </div>
@@ -368,41 +365,10 @@
       </div>
     </div>
 
-    <div class="chart-block">
-      <p class="chart-title">批次換肉率（FCR）趨勢 · 示意圖</p>
-      <svg viewBox="0 0 480 190" width="100%" height="190" role="img" aria-label="六個批次的換肉率示意趨勢，從1.78逐漸降到1.65，代表飼養效率逐批改善">
-        <g style="stroke: var(--chart-grid); stroke-width: 1;">
-          <line x1="30" y1="20" x2="30" y2="150" />
-          <line x1="30" y1="150" x2="460" y2="150" />
-        </g>
-        <polyline points="55,34 130,52 205,44 280,68 355,58 430,86"
-          style="fill:none; stroke: var(--moss); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round;" />
-        <g style="fill: var(--moss);">
-          <circle cx="55" cy="34" r="3.5" />
-          <circle cx="130" cy="52" r="3.5" />
-          <circle cx="205" cy="44" r="3.5" />
-          <circle cx="280" cy="68" r="3.5" />
-          <circle cx="355" cy="58" r="3.5" />
-          <circle cx="430" cy="86" r="5" />
-        </g>
-        <text x="430" y="72" text-anchor="middle" class="mono" style="font-size:12px; fill: var(--moss);">1.65</text>
-        <text x="55" y="20" text-anchor="middle" class="mono" style="font-size:11px; fill: var(--ink-muted);">1.78</text>
-        <g style="font-family:'Karla',sans-serif; font-size:11px; fill: var(--ink-muted);">
-          <text x="55" y="168" text-anchor="middle">批次1</text>
-          <text x="130" y="168" text-anchor="middle">批次2</text>
-          <text x="205" y="168" text-anchor="middle">批次3</text>
-          <text x="280" y="168" text-anchor="middle">批次4</text>
-          <text x="355" y="168" text-anchor="middle">批次5</text>
-          <text x="430" y="168" text-anchor="middle">批次6</text>
-        </g>
-      </svg>
-      <p class="chart-caption">數字為示意用途，非實際飼養資料——用來說明「看得到自己在進步」這件事。</p>
-    </div>
-
     <p class="reference-note">
       定位上參考國際上的 My Poultry Manager 這類養殖紀錄軟體，但鎖定台灣中南部的白肉雞契約戶（水簾式雞舍、
-      愛拔益加／樂斯等主力雞種），不是泛用的通用畜牧工具。開發者本人也有白肉雞場的第一線工作經驗——
-      巡過雞舍、看過死淘率怎麼被算出來，這個工具是從實際站在雞舍裡的角度設計的，不是憑空想像的軟體。
+      愛拔益加／樂斯等主力雞種），不是泛用的通用畜牧工具。從第一線的工作經驗出發，做出真正符合需求的系統：
+      不只是記錄，也能從圖表看見每一批的變化，找到可以改善、調整的地方，讓雞越養越好。
     </p>
     <div class="callout">
       <strong>目前狀態：</strong>開發中，尚未開放試用或訂閱。想在上線時第一時間收到通知，歡迎<a href="#contact">來信</a>。
