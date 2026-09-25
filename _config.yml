@@ -1,0 +1,9 @@
+# GitHub Pages runs Jekyll on this repo; keep the Markdown sources, scripts and notes out of the published site.
+exclude:
+  - content
+  - scripts
+  - README.md
+  - CLAUDE.md
+  - publish.py
+  - preview.bat
+  - publish.bat
