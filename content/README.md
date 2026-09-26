@@ -81,11 +81,11 @@ description: （選填）搜尋結果的簡介
 ```
 ---
 title: 給自由工作者的生活工作管理大師
-eyebrow: Product 01 · 開放試用中       ← 標題上方的小字（產品編號 · 狀態）
+eyebrow: Product 01 · 免費試用       ← 標題上方的小字（產品編號 · 狀態）
 description: 搜尋結果的簡介
 order: 1                              ← 總覽頁小卡片的順序（數字小的在前）
 summary: 一句話介紹                    ← 總覽頁小卡片上的文字
-status: 開放試用中                     ← 小卡片上的狀態小標籤
+status: 免費試用                     ← 小卡片上的狀態小標籤
 status_style: open                    ← （選填）標籤用強調色
 ---
 
