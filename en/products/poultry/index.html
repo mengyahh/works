@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Broiler Farm Record System | Understory</title>
+<meta name="description" content="Daily records, batch settlement and analysis charts for small and mid-sized broiler farmers, with the data kept in your own hands. In development.">
+<link rel="canonical" href="https://understory.mengyahh.com/en/products/poultry/">
+<link rel="alternate" hreflang="zh-Hant-TW" href="https://understory.mengyahh.com/products/poultry/">
+<link rel="alternate" hreflang="en" href="https://understory.mengyahh.com/en/products/poultry/">
+<link rel="alternate" hreflang="ja" href="https://understory.mengyahh.com/ja/products/poultry/">
+<link rel="alternate" hreflang="x-default" href="https://understory.mengyahh.com/products/poultry/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Understory">
+<meta property="og:title" content="Broiler Farm Record System | Understory">
+<meta property="og:description" content="Daily records, batch settlement and analysis charts for small and mid-sized broiler farmers, with the data kept in your own hands. In development.">
+<meta property="og:url" content="https://understory.mengyahh.com/en/products/poultry/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Karla:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+</head>
+<body>
+<nav class="topbar">
+  <div class="wrap">
+    <p class="wordmark"><a href="/en/">under<span>story</span></a></p>
+    <button type="button" class="menu-btn" aria-expanded="false" aria-controls="menu">Menu</button>
+    <ul class="topnav" id="menu">
+      <li class="has-sub">
+        <a href="/en/products/">AppSheet</a><button type="button" class="sub-btn" aria-label="Open the AppSheet menu" aria-expanded="false" aria-haspopup="true" aria-controls="sub-appsheet"><span class="caret" aria-hidden="true">▾</span></button>
+        <ul class="sub" id="sub-appsheet">
+          <li><a href="/en/products/freelance/">Freelancer Toolkit</a></li>
+          <li><a href="/en/products/poultry/">Broiler Farm Records</a></li>
+          <li><a href="/en/products/custom/">Custom Systems</a></li>
+          <li><span class="soon">Case Management<em>Soon</em></span></li>
+        </ul>
+      </li>
+      <li><span class="soon">Event Planning<em>Soon</em></span></li>
+      <li><span class="soon">Issue Outreach<em>Soon</em></span></li>
+      <li><a href="/en/about.html">About</a></li>
+      <li><a href="/en/about.html#contact">Contact</a></li>
+      <li class="langs" aria-label="Language"><a href="/products/poultry/" hreflang="zh-Hant-TW" lang="zh-Hant-TW">中文</a> · <a href="/en/products/poultry/" hreflang="en" lang="en" aria-current="true">EN</a> · <a href="/ja/products/poultry/" hreflang="ja" lang="ja">日本語</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="product">
+  <div class="wrap">
+    <p class="eyebrow">Product 02 · In development</p>
+    <h1>Broiler Farm Record System</h1>
+    <div class="prose"><p>The <strong>Broiler Farm Record System</strong> is a record-keeping tool designed for <strong>small and mid-sized broiler farmers</strong>. Your data stays in your own hands and isn't tied to any equipment brand.</p></div>
+    <div class="feature-grid">
+      <div class="feature">
+        <h3>Daily records</h3>
+        <p>Water use, deaths and culls, drinking water and medication. A few minutes a day is enough.</p>
+      </div>
+      <div class="feature">
+        <h3>Batch settlement</h3>
+        <p>Once a batch is cleared, feed conversion ratio (FCR) and livability are calculated automatically. No calculator needed.</p>
+      </div>
+      <div class="feature">
+        <h3>Analysis charts</h3>
+        <p>Every batch's numbers become charts, so you can compare batches and spot what to adjust for the next one.</p>
+      </div>
+      <div class="feature">
+        <h3>Your data stays yours</h3>
+        <p>Not tied to any climate-control brand. Switch equipment or systems without losing your data.</p>
+      </div>
+    </div>
+    <p class="reference-note">Aimed at contract broiler farmers in central and southern Taiwan (water-curtain houses, mainstream breeds like Arbor Acres and Ross), not a general livestock tool. It comes from first-hand work experience, and it's built to fit real needs: not only recording, but seeing how each batch changes in the charts, finding what can be improved or adjusted, and raising livability.</p>
+    <div class="callout">
+      <strong>Status:</strong> In development. Not yet open for trial or subscription. If you'd like to hear as soon as it launches, please <a href="#contact">write to me</a>.
+    </div>
+    <p class="back"><a href="/en/products/">← Back to AppSheet systems</a></p>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <h2>Let's talk</h2>
+    <p class="lead">Tell me what you're dealing with, and we'll decide together what to do.</p>
+    <div class="mailbox">
+      <span class="addr" id="addr">mengyahh@gmail.com</span>
+      <button type="button" id="copy">複製 email</button>
+    </div>
+    <div class="links">
+      <a href="https://www.instagram.com/mengyahh">Instagram ↗</a>
+      <a href="https://mengyahh.com/en/">mengyahh.com ↗</a>
+    </div>
+  </div>
+</section>
+
+
+<footer>
+  <div class="wrap"><p>Understory · works by mengyahh</p></div>
+</footer>
+
+<script>
+(function () {
+  var nav = document.getElementById('menu');
+  var menuBtn = document.querySelector('.menu-btn');
+  var subBtns = Array.prototype.slice.call(document.querySelectorAll('.sub-btn'));
+
+  function closeSubs(except) {
+    subBtns.forEach(function (b) {
+      var sub = document.getElementById(b.getAttribute('aria-controls'));
+      if (sub === except) return;
+      sub.classList.remove('open');
+      b.setAttribute('aria-expanded', 'false');
+    });
+  }
+  menuBtn.addEventListener('click', function () {
+    var open = nav.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  subBtns.forEach(function (b) {
+    var sub = document.getElementById(b.getAttribute('aria-controls'));
+    b.addEventListener('click', function (e) {
+      e.stopPropagation();
+      closeSubs(sub);
+      var open = sub.classList.toggle('open');
+      b.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.has-sub')) closeSubs();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { closeSubs(); nav.classList.remove('open'); menuBtn.setAttribute('aria-expanded', 'false'); }
+  });
+  nav.addEventListener('click', function (e) {              // picking a link closes the menus
+    if (e.target.closest('a')) {
+      closeSubs();
+      nav.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    }
+  });
+})();
+</script>
+
+<script>
+  document.getElementById('copy').addEventListener('click', function () {
+    var btn = this, text = document.getElementById('addr').textContent;
+    function done(msg) { btn.textContent = msg; setTimeout(function () { btn.textContent = 'Copy email'; }, 1800); }
+    function fallback() {
+      var r = document.createRange(); r.selectNodeContents(document.getElementById('addr'));
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); done('Selected, press copy');
+    }
+    try {
+      navigator.clipboard.writeText(text).then(function () { done('Copied'); }, fallback);
+    } catch (e) { fallback(); }
+  });
+</script>
+</body>
+</html>

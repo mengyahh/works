@@ -246,3 +246,11 @@
     :root:not([data-theme="light"]) { --chip-bg: rgba(155, 201, 133, 0.12); --chip-bg-open: rgba(214, 169, 111, 0.18); }
   }
   :root[data-theme="dark"] { --chip-bg: rgba(155, 201, 133, 0.12); --chip-bg-open: rgba(214, 169, 111, 0.18); }
+
+  /* language switcher and Japanese type */
+  .topnav .langs { font-family: "IBM Plex Mono", monospace; font-size: 12px; letter-spacing: 0.04em; color: var(--ink-muted); margin-left: 6px; padding-left: 14px; border-left: 1px solid var(--border-strong); white-space: nowrap; }
+  .topnav .langs a { color: var(--ink-muted); text-transform: none; }
+  .topnav .langs a[aria-current="true"] { color: var(--moss); font-weight: 700; }
+  @media (max-width: 860px) { .topnav .langs { margin-left: 0; padding-left: 0; border-left: 0; } }
+  html[lang="ja"] body { font-family: "Karla", "Noto Sans JP", "Hiragino Sans", "Yu Gothic UI", sans-serif; }
+  html[lang="ja"] h1, html[lang="ja"] h2, html[lang="ja"] h3, html[lang="ja"] .wordmark { font-family: "Fraunces", "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif; }

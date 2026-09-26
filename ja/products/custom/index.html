@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>カスタムシステム開発 | Understory</title>
+<meta name="description" content="ご要望に合わせて管理システムを作ります。簡単でも複雑でも、気軽に聞いてください。まず要望をうかがってから、お見積もりの話をします。">
+<link rel="canonical" href="https://understory.mengyahh.com/ja/products/custom/">
+<link rel="alternate" hreflang="zh-Hant-TW" href="https://understory.mengyahh.com/products/custom/">
+<link rel="alternate" hreflang="en" href="https://understory.mengyahh.com/en/products/custom/">
+<link rel="alternate" hreflang="ja" href="https://understory.mengyahh.com/ja/products/custom/">
+<link rel="alternate" hreflang="x-default" href="https://understory.mengyahh.com/products/custom/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Understory">
+<meta property="og:title" content="カスタムシステム開発 | Understory">
+<meta property="og:description" content="ご要望に合わせて管理システムを作ります。簡単でも複雑でも、気軽に聞いてください。まず要望をうかがってから、お見積もりの話をします。">
+<meta property="og:url" content="https://understory.mengyahh.com/ja/products/custom/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Karla:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap">
+</head>
+<body>
+<nav class="topbar">
+  <div class="wrap">
+    <p class="wordmark"><a href="/ja/">under<span>story</span></a></p>
+    <button type="button" class="menu-btn" aria-expanded="false" aria-controls="menu">メニュー</button>
+    <ul class="topnav" id="menu">
+      <li class="has-sub">
+        <a href="/ja/products/">AppSheet</a><button type="button" class="sub-btn" aria-label="AppSheet メニューを開く" aria-expanded="false" aria-haspopup="true" aria-controls="sub-appsheet"><span class="caret" aria-hidden="true">▾</span></button>
+        <ul class="sub" id="sub-appsheet">
+          <li><a href="/ja/products/freelance/">フリーランス向けツール</a></li>
+          <li><a href="/ja/products/poultry/">ブロイラー飼育記録システム</a></li>
+          <li><a href="/ja/products/custom/">カスタムシステム開発</a></li>
+          <li><span class="soon">ケース管理システム<em>準備中</em></span></li>
+        </ul>
+      </li>
+      <li><span class="soon">イベント企画<em>準備中</em></span></li>
+      <li><span class="soon">課題発信<em>準備中</em></span></li>
+      <li><a href="/ja/about.html">About</a></li>
+      <li><a href="/ja/about.html#contact">お問い合わせ</a></li>
+      <li class="langs" aria-label="言語"><a href="/products/custom/" hreflang="zh-Hant-TW" lang="zh-Hant-TW">中文</a> · <a href="/en/products/custom/" hreflang="en" lang="en">EN</a> · <a href="/ja/products/custom/" hreflang="ja" lang="ja" aria-current="true">日本語</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="product">
+  <div class="wrap">
+    <p class="eyebrow">Custom</p>
+    <h1>カスタムシステム開発</h1>
+    <div class="prose"><p>このサイトで紹介しているシステムは、どれも完成済みで、すぐに使っていただけます。でも、<strong>オリジナルのシステム</strong>を作ってほしいというご相談も受け付けています。簡単なものでも複雑なものでも、気軽に聞いてください。</p></div>
+    <div class="callout">
+      <strong>はじめ方：</strong> まずはご連絡ください。どんなことに困っているかをうかがってから、お見積もりの話をします。
+      <div class="cta-row">
+        <a class="cta-btn" href="mailto:mengyahh@gmail.com?subject=%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%81%AE%E7%9B%B8%E8%AB%87">メールで相談する →</a>
+      </div>
+    </div>
+    <p class="back"><a href="/ja/products/">← AppSheet システム一覧へ</a></p>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <h2>まずは話しましょう</h2>
+    <p class="lead">いま困っていることを聞かせてください。何をするかは、一緒に決めましょう。</p>
+    <div class="mailbox">
+      <span class="addr" id="addr">mengyahh@gmail.com</span>
+      <button type="button" id="copy">複製 email</button>
+    </div>
+    <div class="links">
+      <a href="https://www.instagram.com/mengyahh">Instagram ↗</a>
+      <a href="https://mengyahh.com/ja/">mengyahh.com ↗</a>
+    </div>
+  </div>
+</section>
+
+
+<footer>
+  <div class="wrap"><p>Understory · works by mengyahh</p></div>
+</footer>
+
+<script>
+(function () {
+  var nav = document.getElementById('menu');
+  var menuBtn = document.querySelector('.menu-btn');
+  var subBtns = Array.prototype.slice.call(document.querySelectorAll('.sub-btn'));
+
+  function closeSubs(except) {
+    subBtns.forEach(function (b) {
+      var sub = document.getElementById(b.getAttribute('aria-controls'));
+      if (sub === except) return;
+      sub.classList.remove('open');
+      b.setAttribute('aria-expanded', 'false');
+    });
+  }
+  menuBtn.addEventListener('click', function () {
+    var open = nav.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  subBtns.forEach(function (b) {
+    var sub = document.getElementById(b.getAttribute('aria-controls'));
+    b.addEventListener('click', function (e) {
+      e.stopPropagation();
+      closeSubs(sub);
+      var open = sub.classList.toggle('open');
+      b.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.has-sub')) closeSubs();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { closeSubs(); nav.classList.remove('open'); menuBtn.setAttribute('aria-expanded', 'false'); }
+  });
+  nav.addEventListener('click', function (e) {              // picking a link closes the menus
+    if (e.target.closest('a')) {
+      closeSubs();
+      nav.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    }
+  });
+})();
+</script>
+
+<script>
+  document.getElementById('copy').addEventListener('click', function () {
+    var btn = this, text = document.getElementById('addr').textContent;
+    function done(msg) { btn.textContent = msg; setTimeout(function () { btn.textContent = 'メールをコピー'; }, 1800); }
+    function fallback() {
+      var r = document.createRange(); r.selectNodeContents(document.getElementById('addr'));
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); done('選択しました。コピーしてください');
+    }
+    try {
+      navigator.clipboard.writeText(text).then(function () { done('コピーしました'); }, fallback);
+    } catch (e) { fallback(); }
+  });
+</script>
+</body>
+</html>

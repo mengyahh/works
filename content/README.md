@@ -112,7 +112,15 @@ status_style: open                    ← （選填）標籤用強調色
 :::
 ```
 
-新增產品：複製一個 `.md` 改內容，再到首頁 `index.html` 的「AppSheet 管理系統」區塊加一張小卡片，並在導覽列的下拉選單加上連結（導覽列在 `index.html` 和 `scripts/build.py` 各有一份）。
+新增產品：複製一個 `.md` 改內容，首頁卡片、AppSheet 總覽頁的卡片和導覽列下拉選單會由 `build.py` 自動產生。首頁本身現在也是 Markdown（`content/index.md`）。
+
+## 英文版與日文版
+
+英文放在 `content/en/`、日文放在 `content/ja/`，檔名和結構跟中文版一模一樣（`index.md`、`about.md`、`appsheet.md`、`products/*.md`），輸出到 `/en/`、`/ja/`。缺哪個檔就不會產生那一頁，語言切換會自動只列出有的版本。
+
+- 作品集（`portfolio/`）只有中文，英日文版的 about 頁面會標示「中文」連到中文頁。
+- 英日文版不放價格，試用申請先用 `mailto:` 連結，等有對應語言的表單再換。
+- App 截圖：把英文／日文版 App 的截圖放進 `screenshots/en/` 或 `screenshots/ja/`，檔名跟中文版同名（例如 `shot-消費分析.png`），就會自動取代；沒放的話暫時沿用中文版截圖。
 
 ## 出錯時
 
