@@ -5,6 +5,7 @@
 
 content/about.md                  ->  about.html
 content/portfolio/<slug>.md       ->  portfolio/<slug>/index.html      (files starting with "_" are drafts and are skipped)
+content/products/<slug>.md        ->  products/<slug>/index.html
 
 index.html (the home page with the products) is still written by hand in HTML.
 See content/README.md for how to write the Markdown files. Stdlib only.
@@ -93,10 +94,10 @@ def nav_html(base, current):
       <li class="has-sub">
         <button type="button" class="sub-btn" aria-expanded="false" aria-haspopup="true" aria-controls="sub-appsheet">AppSheet<span class="caret" aria-hidden="true">▾</span></button>
         <ul class="sub" id="sub-appsheet">
-          <li><a href="{base}index.html#freelance">自由工作者套件</a></li>
-          <li><a href="{base}index.html#poultry">白肉雞養殖紀錄系統</a></li>
+          <li><a href="{base}index.html#appsheet">AppSheet 介紹</a></li>
+          <li><a href="{base}products/freelance/">自由工作者套件</a></li>
+          <li><a href="{base}products/poultry/">白肉雞養殖紀錄系統</a></li>
           <li><span class="soon">個案管理系統<em>準備中</em></span></li>
-          <li><span class="soon">AppSheet 介紹<em>準備中</em></span></li>
         </ul>
       </li>
       <li><span class="soon">活動企劃<em>準備中</em></span></li>
@@ -289,6 +290,94 @@ def contact_html(body, email):
             f'    <div class="links">\n{links}    </div>\n  </div>\n</section>\n')
 
 
+# ------------------------------------------------------------------ products/<slug>.md
+
+def r_features(args, body):
+    items = []
+    for kind, raw in M.blocks(body):
+        if kind == 'h3':
+            items.append({'title': M.heading_text(raw), 'text': ''})
+        elif kind == 'p' and items:
+            items[-1]['text'] = raw
+    cells = ''.join(f'      <div class="feature">\n        <h3>{M.inline(i["title"])}</h3>\n        <p>{M.inline(i["text"])}</p>\n      </div>\n' for i in items)
+    return f'    <div class="feature-grid">\n{cells}    </div>\n'
+
+
+def r_screens(args, body, base):
+    shots, note, after = [], '', False
+    for kind, raw in M.blocks(body):
+        if kind == 'img':
+            m = M.IMG.match(raw)
+            alt, src, cap = m.groups()
+            shots.append(f'        <div class="screen-shot">\n          <img src="{base}{src}" alt="{M.esc(alt)}">\n          <p>{M.inline(cap or "")}</p>\n        </div>\n')
+        elif kind == 'hr':
+            after = True
+        elif kind == 'p' and after:
+            note = f'      <p class="chart-caption">{M.inline(raw)}</p>\n'
+    return (f'    <div class="screens-block">\n      <p class="chart-title">{M.inline(args)}</p>\n      <div class="screens-grid">\n{"".join(shots)}'
+            f'      </div>\n{note}    </div>\n')
+
+
+def r_note(args, body):
+    return f'    <p class="reference-note">{M.inline(body.strip())}</p>\n'
+
+
+def r_callout(args, body):
+    paras, links = [], []
+    for kind, raw in M.blocks(body):
+        if kind == 'p':
+            paras.append(M.inline(raw))
+        elif kind == 'ul':
+            for item in M.list_items(raw):
+                m = re.match(r'^\[([^\]]+)\]\(([^)\s]+)\)$', item)
+                if not m:
+                    raise SystemExit(f'::: callout buttons must look like "- [文字](網址)" (got "{item[:30]}")')
+                links.append((m.group(1), m.group(2)))
+    cls = 'callout open' if args.strip() == 'open' else 'callout'
+    btns = ''.join(f'<a class="cta-btn{"" if i == 0 else " secondary"}" href="{u}" target="_blank" rel="noopener">{M.esc(t)}</a>\n        '
+                   for i, (t, u) in enumerate(links))
+    cta = f'\n      <div class="cta-row">\n        {btns.rstrip()}\n      </div>' if links else ''
+    return f'    <div class="{cls}">\n      {"<br><br>".join(paras)}{cta}\n    </div>\n'
+
+
+def build_products(contact):
+    made = []
+    for path in sorted(glob.glob(os.path.join(ROOT, 'content', 'products', '*.md'))):
+        name = os.path.basename(path)
+        if name.startswith('_'):
+            continue
+        slug = os.path.splitext(name)[0]
+        meta, body = M.split_front(open(path, encoding='utf-8').read())
+        title = meta.get('title') or slug
+        base = '../../'
+        first = body.find(':::')
+        intro_text, rest = (body, '') if first < 0 else (body[:first], body[first:])
+        intro = ''.join(f'<p>{M.inline(r)}</p>' for k, r in M.blocks(intro_text) if k == 'p')
+        parts = []
+        for typ, args, dbody in M.directives(rest):
+            if typ == 'features':
+                parts.append(r_features(args, dbody))
+            elif typ == 'screens':
+                parts.append(r_screens(args, dbody, base))
+            elif typ == 'note':
+                parts.append(r_note(args, dbody))
+            elif typ == 'callout':
+                parts.append(r_callout(args, dbody))
+            else:
+                raise SystemExit(f'{name}: unknown block "::: {typ}" (known: features, screens, note, callout)')
+        inner = (f'<section class="product">\n  <div class="wrap">\n    <p class="eyebrow">{M.esc(meta.get("eyebrow", ""))}</p>\n'
+                 f'    <h1>{M.inline(title)}</h1>\n    <div class="prose">{intro}</div>\n{"".join(parts)}'
+                 f'    <p class="back"><a href="{base}index.html#appsheet">← 回到 AppSheet 管理系統</a></p>\n  </div>\n</section>\n\n{contact}')
+        out = page(base=base, title=f'{title} | Understory', desc=meta.get('description') or title, url=f'{SITE}/products/{slug}/', body=inner)
+        dest = os.path.join(ROOT, 'products', slug, 'index.html')
+        os.makedirs(os.path.dirname(dest), exist_ok=True)
+        with open(dest, 'w', encoding='utf-8', newline='\n') as f:
+            f.write(out)
+        made.append(slug)
+        print('wrote', os.path.relpath(dest, ROOT))
+    return made
+
+
 BLOCKS = {'skills': r_skills, 'projects': r_projects, 'process': r_process, 'why': r_why, 'name': r_name}
 
 
@@ -412,3 +501,4 @@ def build_portfolio(contact):
 if __name__ == '__main__':
     contact = build_about()
     build_portfolio(contact)
+    build_products(contact)

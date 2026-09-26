@@ -5,9 +5,11 @@ content/about.md                      關於頁（about.html）
 content/portfolio/daodu-hexi.md       作品集頁（島讀河溪）：一個 .md 檔 ＝ 一個作品頁
 content/portfolio/lecheng.md          作品集頁（樂城生活節）
 content/portfolio/_專項（暫不顯示）.md   檔名開頭是 _ 的不會發布（先收起來的內容放這裡）
+content/products/freelance.md         產品頁：自由工作者管理大師
+content/products/poultry.md           產品頁：白肉雞養殖紀錄系統
 ```
 
-首頁（`index.html`，產品介紹）還是手寫的 HTML，沒有改成 Markdown。
+首頁（`index.html`）還是手寫的 HTML，沒有改成 Markdown；它只放產品的簡短介紹，完整內容在產品頁。
 
 ## 日常流程
 
@@ -66,6 +68,42 @@ description: （選填）搜尋結果的簡介
 - 加新圖片：`python scripts/photo.py D:\照片\a.jpg`（需要 `pip install pillow`），它會縮小、去掉 EXIF（含 GPS 位置）、編號，並印出要貼進去的那幾行。
 - 新增一個作品頁：複製一個現有的 `.md` 改內容，檔名取新的網址名稱；記得到 `about.md` 的專案列表加上連結。
 - 想暫時不發布：檔名前面加 `_`。
+
+## 產品頁 `content/products/<網址名稱>.md`
+
+每個產品一頁：`freelance.md` → `understory.mengyahh.com/products/freelance/`。首頁只放產品的簡短說明（小卡片），完整介紹在這裡。
+
+```
+---
+title: 給自由工作者的生活工作管理大師
+eyebrow: Product 01 · 開放試用中       ← 標題上方的小字（產品編號 · 狀態）
+description: 搜尋結果的簡介
+---
+
+開頭一兩段介紹文字（不需要區塊符號）。
+
+::: features                       ← 功能卡片：每個 ### 是一張（標題＋下一段說明）
+### 接案追蹤
+記錄合作單位、專案、費用方式。
+:::
+
+::: screens App 實際畫面             ← 畫面截圖：圖片一行一張，引號裡是圖說；--- 之後那段是備註
+![畫面說明](screenshots/xxx.png "圖說")
+---
+畫面中的資料皆為測試資料。
+:::
+
+::: note                            ← 灰色小字的補充說明
+:::
+
+::: callout open                    ← 「目前狀態」方塊（open ＝ 邊框用強調色；不寫就是一般樣式）
+**目前狀態：**……
+
+- [按鈕文字 →](https://網址)          ← 列表會變成按鈕，第一個是主要按鈕
+:::
+```
+
+新增產品：複製一個 `.md` 改內容，再到首頁 `index.html` 的「AppSheet 管理系統」區塊加一張小卡片，並在導覽列的下拉選單加上連結（導覽列在 `index.html` 和 `scripts/build.py` 各有一份）。
 
 ## 出錯時
 

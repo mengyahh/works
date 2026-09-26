@@ -117,6 +117,11 @@
   .prod-intro { padding: 56px 0 60px; border-bottom: 1px solid var(--border); scroll-margin-top: 64px; }
   .prod-intro h2 { font-size: 30px; margin: 12px 0 14px; }
   .prod-intro .lede { font-size: 16px; color: var(--ink-soft); max-width: 60ch; margin: 0; }
+  .points-title { font-family: "Karla", "Noto Sans TC", sans-serif; font-size: 15px; font-weight: 700; color: var(--ink); margin: 26px 0 10px; letter-spacing: 0; text-transform: none; }
+  .points { margin: 0 0 24px; padding-left: 1.2em; max-width: 60ch; font-size: 15px; color: var(--ink-soft); }
+  .points li { margin: 0 0 6px; }
+  .points strong { color: var(--moss); font-weight: 700; }
+  .prod-intro .lede.after-points { margin-top: 4px; }
 
   .teaser-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 40px; }
   .teaser { background: var(--bg); padding: 24px 26px; text-decoration: none; display: block; }
@@ -189,10 +194,10 @@
       <li class="has-sub">
         <button type="button" class="sub-btn" aria-expanded="false" aria-haspopup="true" aria-controls="sub-appsheet">AppSheet<span class="caret" aria-hidden="true">▾</span></button>
         <ul class="sub" id="sub-appsheet">
-          <li><a href="#freelance">自由工作者套件</a></li>
-          <li><a href="#poultry">白肉雞養殖紀錄系統</a></li>
+          <li><a href="#appsheet">AppSheet 介紹</a></li>
+          <li><a href="products/freelance/">自由工作者套件</a></li>
+          <li><a href="products/poultry/">白肉雞養殖紀錄系統</a></li>
           <li><span class="soon">個案管理系統<em>準備中</em></span></li>
-          <li><span class="soon">AppSheet 介紹<em>準備中</em></span></li>
         </ul>
       </li>
       <li><span class="soon">活動企劃<em>準備中</em></span></li>
@@ -223,154 +228,34 @@
   </div>
 </header>
 
-<section class="prod-intro" id="products">
+<section class="prod-intro" id="appsheet">
   <div class="wrap">
     <p class="eyebrow">Products</p>
     <h2>AppSheet 管理系統</h2>
     <p class="lede">
+      AppSheet 是 Google 開發的無程式碼應用程式平台，能快速從 Google Sheets、Excel 或其他資料來源建立客製化 App。
+    </p>
+    <h3 class="points-title">功能與特色</h3>
+    <ul class="points">
+      <li><strong>資料連結與視圖：</strong>可連結 Google Sheets 或 Excel，產生表單、圖表、儀表板等行動友善介面。</li>
+      <li><strong>離線使用與同步：</strong>支援離線輸入資料，連網後自動同步。</li>
+      <li><strong>使用者管理：</strong>具基本權限控制，可與工作夥伴共同使用。</li>
+      <li><strong>跨平台相容性：</strong>電腦網頁、Android／iOS 手機、平板等裝置皆適用。</li>
+    </ul>
+    <p class="lede after-points">
       以 google 的服務 Appsheet 所打造的系統工具，最大特色在於累積的資料就存在google sheet（試算表）中，易於匯出取用。目前有兩個進行中的專案：
     </p>
     <div class="teaser-row">
-      <a class="teaser" href="#freelance">
+      <a class="teaser" href="products/freelance/">
         <p class="tname">給自由工作者的生活工作管理大師</p>
         <p>接案、工時、多幣值記帳，一個工具搞定</p>
         <span class="status-chip open">開放試用中</span>
       </a>
-      <a class="teaser" href="#poultry">
+      <a class="teaser" href="products/poultry/">
         <p class="tname">白肉雞養殖紀錄系統</p>
         <p>給中小型契約戶的每日養殖紀錄與換肉率分析</p>
         <span class="status-chip">開發中</span>
       </a>
-    </div>
-</section>
-
-<section class="product" id="freelance">
-  <div class="wrap">
-    <p class="eyebrow">Product 01 · 開放試用中</p>
-    <h2>給自由工作者的生活工作管理大師</h2>
-    <div class="prose">
-      <p>
-        接案生活常常要同時追蹤好幾個合作單位的專案、費用、工時，記帳又是另一套系統——
-        <strong>給自由工作者的生活工作管理大師</strong>把接案紀錄、多幣值記帳、待辦與靈感筆記整合在同一個工具裡，
-        不用在好幾個 App 之間切換。這個工具最初是開發者為了解決自己接案生活的管理需求所打造的，
-        不是先設計好功能表再找使用情境，而是先有真實的痛點，才長出現在這些功能。
-      </p>
-    </div>
-    <div class="feature-grid">
-      <div class="feature">
-        <h3>接案追蹤</h3>
-        <p>記錄合作單位、專案、費用方式（時薪或固定），並填寫預估工時。</p>
-      </div>
-      <div class="feature">
-        <h3>工時比對</h3>
-        <p>另有一張表隨時登記實際花費的工時，自動跟預估工時比較，慢慢練出更準的估價能力。</p>
-      </div>
-      <div class="feature">
-        <h3>多幣值記帳</h3>
-        <p>付款方式、消費類型都能記錄，不同幣值的收支統一換算成單一幣值分析，不用自己心算匯率。</p>
-      </div>
-      <div class="feature">
-        <h3>收支圖表</h3>
-        <p>月度／年度收入、與目標收入的差額、收入來源（依合作單位）、消費類型與消費方式的金額分布，一次看懂。</p>
-      </div>
-      <div class="feature">
-        <h3>隨手待辦與靈感</h3>
-        <p>待辦事項依期限自動排序，可設完成或暫緩；靈感隨手記下，不怕想法轉眼就忘。</p>
-      </div>
-      <div class="feature">
-        <h3>願望清單</h3>
-        <p>想看的書、電影、展覽都能記，上傳截圖或網址，標記已完成／已購買／未確認；上傳的圖片會自動轉成文字，不用手key。</p>
-      </div>
-    </div>
-
-    <div class="screens-block">
-      <p class="chart-title">App 實際畫面</p>
-      <div class="screens-grid">
-        <div class="screen-shot">
-          <img src="screenshots/shot-消費分析.png" alt="年度消費分析頁面，消費類型統計圓餅圖">
-          <p>年度消費分析</p>
-        </div>
-        <div class="screen-shot">
-          <img src="screenshots/shot-工時列表.png" alt="工時紀錄頁面，依月份列出各專案工作時數">
-          <p>工時紀錄</p>
-        </div>
-        <div class="screen-shot">
-          <img src="screenshots/shot-每月工時.png" alt="每月工時長條圖">
-          <p>每月工時趨勢</p>
-        </div>
-        <div class="screen-shot">
-          <img src="screenshots/shot-消費紀錄.png" alt="消費紀錄列表，依月份列出各筆花費與換算台幣金額">
-          <p>消費紀錄</p>
-        </div>
-        <div class="screen-shot">
-          <img src="screenshots/shot-待辦事項.png" alt="待辦事項列表，依死線排序，分進行中與已完成">
-          <p>待辦事項</p>
-        </div>
-        <div class="screen-shot">
-          <img src="screenshots/shot-專案列表.png" alt="專案列表，列出執行中專案的累積時數與實際時薪">
-          <p>專案列表</p>
-        </div>
-        <div class="screen-shot">
-          <img src="screenshots/shot-收入總表.png" alt="收入總表，依專案與工作月份列出金額">
-          <p>收入總表</p>
-        </div>
-      </div>
-      <p class="chart-caption">畫面中的專案名稱、金額、日期皆為測試資料，非真實接案紀錄。</p>
-    </div>
-
-    <div class="callout open">
-      <strong>目前狀態：</strong>開發完成，現正開放<strong>免費 2 週試用</strong>（台灣使用者優先）。填寫下方表單留下 email，
-      我們會盡快跟你聯繫、手動開通帳號。
-      <br><br>
-      這是由開發者自己的實際需求出發打造的工具，目前是試用版，也很需要大家使用後的回饋——
-      不管是覺得不順手的地方，還是希望增加的功能，都歡迎透過下方表單提供優化建議。
-      <strong>提供優化建議的前 10 名使用者，將保證至少可以免費使用到 2026 年底。</strong>
-      未來的正式售價還沒定案，目前預估落在每月 <strong>NT$100～300</strong> 之間；
-      若訂閱滿一年，會額外提供一次資料匯出協助，以及一次微型客製化服務。
-      <div class="cta-row">
-        <a class="cta-btn" href="https://forms.gle/rAVgQqkNyKosxfY8A" target="_blank" rel="noopener">先填表單登記試用 →</a>
-        <a class="cta-btn secondary" href="https://forms.gle/8Mr1hJ6CJBZRiJaQ7" target="_blank" rel="noopener">提供意見回饋 →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="product" id="poultry">
-  <div class="wrap">
-    <p class="eyebrow">Product 02 · 開發中</p>
-    <h2>白肉雞養殖紀錄系統</h2>
-    <div class="prose">
-      <p>
-        <strong>白肉雞養殖紀錄系統</strong>是專門給
-        <strong>養殖白肉雞的中小型個體戶</strong>設計的紀錄工具，資料留在自己手上，不綁特定設備商。
-      </p>
-    </div>
-    <div class="feature-grid">
-      <div class="feature">
-        <h3>每日紀錄</h3>
-        <p>用水量、死雞與淘汰數量、飲水與用藥，每天花幾分鐘就能記完。</p>
-      </div>
-      <div class="feature">
-        <h3>批次結算</h3>
-        <p>一批雞出清後自動結算換肉率（FCR）與育成率，不用自己拿計算機算。</p>
-      </div>
-      <div class="feature">
-        <h3>分析圖表</h3>
-        <p>把每一批的數字畫成圖表，方便比較不同批次的表現、抓出下一批要調整的地方。</p>
-      </div>
-      <div class="feature">
-        <h3>資料留在自己手上</h3>
-        <p>不依附特定環控設備品牌，換設備、換系統都不會丟資料。</p>
-      </div>
-    </div>
-
-    <p class="reference-note">
-      定位上鎖定台灣中南部的白肉雞契約戶（水簾式雞舍、
-      愛拔益加／樂斯等主力雞種），並非泛用的通用畜牧工具。從第一線的工作經驗出發，做出真正符合需求的系統：
-      不只是記錄，也能從圖表看見每一批的變化，找到可以改善、調整的地方，提高育成率。
-    </p>
-    <div class="callout">
-      <strong>目前狀態：</strong>開發中，尚未開放試用或訂閱。想在上線時第一時間收到通知，歡迎<a href="#contact">來信</a>。
     </div>
   </div>
 </section>

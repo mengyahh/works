@@ -6,6 +6,7 @@
 index.html               首頁（產品介紹）：手寫的 HTML
 about.html               關於頁：由 content/about.md 產生，不要直接改
 portfolio/<名稱>/        作品集頁：由 content/portfolio/*.md 產生，不要直接改
+products/<名稱>/         產品頁：由 content/products/*.md 產生，不要直接改
 content/                 用 Markdown 寫的內容（寫法見 content/README.md）
 assets/site.css          關於頁與作品頁共用的樣式
 assets/portfolio/        作品圖片、影片封面
