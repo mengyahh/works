@@ -121,7 +121,7 @@
   .points { margin: 0 0 24px; padding-left: 1.2em; max-width: 60ch; font-size: 15px; color: var(--ink-soft); }
   .points li { margin: 0 0 6px; }
   .points strong { color: var(--moss); font-weight: 700; }
-  .prod-intro .lede.after-points { margin-top: 4px; }
+  .prod-intro .more { margin: 22px 0 0; font-size: 14.5px; }
 
   .teaser-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 40px; }
   .teaser { background: var(--bg); padding: 24px 26px; text-decoration: none; display: block; }
@@ -192,9 +192,8 @@
     <button type="button" class="menu-btn" aria-expanded="false" aria-controls="menu">選單</button>
     <ul class="topnav" id="menu">
       <li class="has-sub">
-        <button type="button" class="sub-btn" aria-expanded="false" aria-haspopup="true" aria-controls="sub-appsheet">AppSheet<span class="caret" aria-hidden="true">▾</span></button>
+        <a href="products/">AppSheet</a><button type="button" class="sub-btn" aria-label="展開 AppSheet 選單" aria-expanded="false" aria-haspopup="true" aria-controls="sub-appsheet"><span class="caret" aria-hidden="true">▾</span></button>
         <ul class="sub" id="sub-appsheet">
-          <li><a href="#appsheet">AppSheet 介紹</a></li>
           <li><a href="products/freelance/">自由工作者套件</a></li>
           <li><a href="products/poultry/">白肉雞養殖紀錄系統</a></li>
           <li><span class="soon">個案管理系統<em>準備中</em></span></li>
@@ -233,16 +232,6 @@
     <p class="eyebrow">Products</p>
     <h2>AppSheet 管理系統</h2>
     <p class="lede">
-      AppSheet 是 Google 開發的無程式碼應用程式平台，能快速從 Google Sheets、Excel 或其他資料來源建立客製化 App。
-    </p>
-    <h3 class="points-title">功能與特色</h3>
-    <ul class="points">
-      <li><strong>資料連結與視圖：</strong>可連結 Google Sheets 或 Excel，產生表單、圖表、儀表板等行動友善介面。</li>
-      <li><strong>離線使用與同步：</strong>支援離線輸入資料，連網後自動同步。</li>
-      <li><strong>使用者管理：</strong>具基本權限控制，可與工作夥伴共同使用。</li>
-      <li><strong>跨平台相容性：</strong>電腦網頁、Android／iOS 手機、平板等裝置皆適用。</li>
-    </ul>
-    <p class="lede after-points">
       以 google 的服務 Appsheet 所打造的系統工具，最大特色在於累積的資料就存在google sheet（試算表）中，易於匯出取用。目前有兩個進行中的專案：
     </p>
     <div class="teaser-row">
@@ -257,6 +246,7 @@
         <span class="status-chip">開發中</span>
       </a>
     </div>
+    <p class="more"><a href="products/">認識 AppSheet 與全部產品 →</a></p>
   </div>
 </section>
 

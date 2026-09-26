@@ -6,6 +6,7 @@
 content/about.md                  ->  about.html
 content/portfolio/<slug>.md       ->  portfolio/<slug>/index.html      (files starting with "_" are drafts and are skipped)
 content/products/<slug>.md        ->  products/<slug>/index.html
+content/appsheet.md               ->  products/index.html   (AppSheet introduction + a card for every product)
 
 index.html (the home page with the products) is still written by hand in HTML.
 See content/README.md for how to write the Markdown files. Stdlib only.
@@ -92,9 +93,8 @@ def nav_html(base, current):
     <button type="button" class="menu-btn" aria-expanded="false" aria-controls="menu">選單</button>
     <ul class="topnav" id="menu">
       <li class="has-sub">
-        <button type="button" class="sub-btn" aria-expanded="false" aria-haspopup="true" aria-controls="sub-appsheet">AppSheet<span class="caret" aria-hidden="true">▾</span></button>
+        <a href="{base}products/">AppSheet</a><button type="button" class="sub-btn" aria-label="展開 AppSheet 選單" aria-expanded="false" aria-haspopup="true" aria-controls="sub-appsheet"><span class="caret" aria-hidden="true">▾</span></button>
         <ul class="sub" id="sub-appsheet">
-          <li><a href="{base}index.html#appsheet">AppSheet 介紹</a></li>
           <li><a href="{base}products/freelance/">自由工作者套件</a></li>
           <li><a href="{base}products/poultry/">白肉雞養殖紀錄系統</a></li>
           <li><span class="soon">個案管理系統<em>準備中</em></span></li>
@@ -367,7 +367,7 @@ def build_products(contact):
                 raise SystemExit(f'{name}: unknown block "::: {typ}" (known: features, screens, note, callout)')
         inner = (f'<section class="product">\n  <div class="wrap">\n    <p class="eyebrow">{M.esc(meta.get("eyebrow", ""))}</p>\n'
                  f'    <h1>{M.inline(title)}</h1>\n    <div class="prose">{intro}</div>\n{"".join(parts)}'
-                 f'    <p class="back"><a href="{base}index.html#appsheet">← 回到 AppSheet 管理系統</a></p>\n  </div>\n</section>\n\n{contact}')
+                 f'    <p class="back"><a href="{base}products/">← 回到 AppSheet 管理系統</a></p>\n  </div>\n</section>\n\n{contact}')
         out = page(base=base, title=f'{title} | Understory', desc=meta.get('description') or title, url=f'{SITE}/products/{slug}/', body=inner)
         dest = os.path.join(ROOT, 'products', slug, 'index.html')
         os.makedirs(os.path.dirname(dest), exist_ok=True)
@@ -376,6 +376,45 @@ def build_products(contact):
         made.append(slug)
         print('wrote', os.path.relpath(dest, ROOT))
     return made
+
+
+def build_products_index(contact):
+    """products/index.html : the AppSheet introduction (content/appsheet.md) plus a card for every product page."""
+    meta, body = M.split_front(open(os.path.join(ROOT, 'content', 'appsheet.md'), encoding='utf-8').read())
+    first = body.find(':::')
+    intro_text, rest = (body, '') if first < 0 else (body[:first], body[first:])
+    intro = ''.join(f'<p>{M.inline(r)}</p>' for k, r in M.blocks(intro_text) if k == 'p')
+    parts = []
+    for typ, args, dbody in M.directives(rest):
+        if typ == 'points':
+            lis = ''.join(f'      <li>{M.inline(i)}</li>\n' for i in M.list_items(dbody.strip()))
+            parts.append(f'    <h3 class="points-title">{M.inline(args)}</h3>\n    <ul class="points">\n{lis}    </ul>\n')
+        elif typ == 'cards':
+            lead = ''.join(f'<p class="lede">{M.inline(r)}</p>' for k, r in M.blocks(dbody) if k == 'p')
+            cards = []
+            for path in sorted(glob.glob(os.path.join(ROOT, 'content', 'products', '*.md'))):
+                name = os.path.basename(path)
+                if name.startswith('_'):
+                    continue
+                pm, _ = M.split_front(open(path, encoding='utf-8').read())
+                cards.append((int(pm.get('order', '99')), os.path.splitext(name)[0], pm))
+            cells = ''
+            for _, slug, pm in sorted(cards, key=lambda c: c[0]):
+                chip = f'<span class="status-chip{" open" if pm.get("status_style") == "open" else ""}">{M.esc(pm.get("status", ""))}</span>' if pm.get('status') else ''
+                cells += (f'      <a class="teaser" href="{slug}/">\n        <p class="tname">{M.inline(pm.get("title", slug))}</p>\n'
+                          f'        <p>{M.inline(pm.get("summary", ""))}</p>\n        {chip}\n      </a>\n')
+            parts.append(f'    {lead}\n    <div class="teaser-row">\n{cells}    </div>\n')
+        else:
+            raise SystemExit(f'content/appsheet.md: unknown block "::: {typ}" (known: points, cards)')
+    inner = (f'<section class="product">\n  <div class="wrap">\n    <p class="eyebrow">{M.esc(meta.get("eyebrow", "Products"))}</p>\n'
+             f'    <h1>{M.inline(meta.get("title", "AppSheet"))}</h1>\n    <div class="prose">{intro}</div>\n{"".join(parts)}'
+             f'    <p class="back"><a href="../index.html#appsheet">← 回到首頁</a></p>\n  </div>\n</section>\n\n{contact}')
+    out = page(base='../', title=f'{meta.get("title", "AppSheet")} | Understory', desc=meta.get('description', ''), url=f'{SITE}/products/', body=inner)
+    dest = os.path.join(ROOT, 'products', 'index.html')
+    os.makedirs(os.path.dirname(dest), exist_ok=True)
+    with open(dest, 'w', encoding='utf-8', newline='\n') as f:
+        f.write(out)
+    print('wrote', os.path.relpath(dest, ROOT))
 
 
 BLOCKS = {'skills': r_skills, 'projects': r_projects, 'process': r_process, 'why': r_why, 'name': r_name}
@@ -502,3 +541,4 @@ if __name__ == '__main__':
     contact = build_about()
     build_portfolio(contact)
     build_products(contact)
+    build_products_index(contact)

@@ -5,6 +5,7 @@ content/about.md                      關於頁（about.html）
 content/portfolio/daodu-hexi.md       作品集頁（島讀河溪）：一個 .md 檔 ＝ 一個作品頁
 content/portfolio/lecheng.md          作品集頁（樂城生活節）
 content/portfolio/_專項（暫不顯示）.md   檔名開頭是 _ 的不會發布（先收起來的內容放這裡）
+content/appsheet.md                   AppSheet 總覽頁（導覽列的 AppSheet）
 content/products/freelance.md         產品頁：自由工作者管理大師
 content/products/poultry.md           產品頁：白肉雞養殖紀錄系統
 ```
@@ -69,6 +70,10 @@ description: （選填）搜尋結果的簡介
 - 新增一個作品頁：複製一個現有的 `.md` 改內容，檔名取新的網址名稱；記得到 `about.md` 的專案列表加上連結。
 - 想暫時不發布：檔名前面加 `_`。
 
+## AppSheet 總覽頁 `content/appsheet.md`
+
+網址是 `understory.mengyahh.com/products/`，導覽列的「AppSheet」點下去就是這一頁：最上面是 AppSheet 的介紹（`::: points 功能與特色` 是條列），下面是每個產品的小卡片。小卡片**自動**從各產品頁的設定產生（見下面的 `summary`、`status`、`order`），新增產品頁就會多一張。
+
 ## 產品頁 `content/products/<網址名稱>.md`
 
 每個產品一頁：`freelance.md` → `understory.mengyahh.com/products/freelance/`。首頁只放產品的簡短說明（小卡片），完整介紹在這裡。
@@ -78,6 +83,10 @@ description: （選填）搜尋結果的簡介
 title: 給自由工作者的生活工作管理大師
 eyebrow: Product 01 · 開放試用中       ← 標題上方的小字（產品編號 · 狀態）
 description: 搜尋結果的簡介
+order: 1                              ← 總覽頁小卡片的順序（數字小的在前）
+summary: 一句話介紹                    ← 總覽頁小卡片上的文字
+status: 開放試用中                     ← 小卡片上的狀態小標籤
+status_style: open                    ← （選填）標籤用強調色
 ---
 
 開頭一兩段介紹文字（不需要區塊符號）。

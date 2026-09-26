@@ -1,6 +1,10 @@
 ---
 title: 給自由工作者的生活工作管理大師
 eyebrow: Product 01 · 開放試用中
+order: 1
+summary: 接案、工時、多幣值記帳，一個工具搞定
+status: 開放試用中
+status_style: open
 description: 把接案紀錄、多幣值記帳、待辦與靈感整合在同一個 AppSheet App 裡的自由工作者管理工具，開放免費 2 週試用。
 ---
 

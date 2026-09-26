@@ -1,6 +1,9 @@
 ---
 title: 白肉雞養殖紀錄系統
 eyebrow: Product 02 · 開發中
+order: 2
+summary: 給中小型契約戶的每日養殖紀錄與換肉率分析
+status: 開發中
 description: 給白肉雞中小型養殖戶的每日養殖紀錄、批次結算與分析圖表，資料留在自己手上。開發中。
 ---
 
