@@ -38,7 +38,7 @@ email: mengyahh@gmail.com
 - 設計排版：Illustrator、Photoshop、InDesign
 - 影音：Premiere、After Effects
 - 網站：Wix、Google Sites、GitHub、網域與 DNS 設定
-- 系統與串接：AppSheet、Google Apps Script、API 串接、LINE 機器人
+- 系統與串接：AppSheet、Google Apps Script、API 串接
 - AI：Claude、NotebookLM
 :::
 
@@ -91,10 +91,10 @@ email: mengyahh@gmail.com
 把問題排出優先順序，一起決定做什麼、做到什麼程度。
 
 ### 一起做出來
-不是全部放心交給我就行，也需要你協助和想法，你是比我更了解自己的人。
+我固然會負起責任，但不是全部放心交給我就行，也十分需要你的協助和想法，畢竟，你是比我更了解自己的人。
 
 ### 交到你手上
-我不喜歡浪費，我喜歡東西可以被喜歡、被使用，可以真的有所幫助。
+我不喜歡浪費，不喜歡我收了錢，卻做了一個你用不了的東西。我會手把手地說明、移交給你。
 
 ---
 
@@ -103,7 +103,7 @@ email: mengyahh@gmail.com
 :::
 
 ::: why 為什麼找我
-## 跟一個人合作，從頭做到尾
+## 跟一個人合作，能夠從頭做到尾
 
 - **了解需求與痛點**：先搞懂你怎麼做事，再談要做什麼，在目標和預算之間找到一個最佳答案！
 - **同一個人負責**：調查、規劃、製作不用換手，不必對不同的人重複說明、交接重工。

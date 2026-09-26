@@ -100,7 +100,7 @@ def nav_html(base, current):
         </ul>
       </li>
       <li><span class="soon">活動企劃<em>準備中</em></span></li>
-      <li><span class="soon">挖掘在地<em>準備中</em></span></li>
+      <li><span class="soon">議題推廣<em>準備中</em></span></li>
       <li>{about}</li>
       <li><a href="{contact}">聯絡</a></li>
     </ul>
