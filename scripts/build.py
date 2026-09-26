@@ -97,6 +97,7 @@ def nav_html(base, current):
         <ul class="sub" id="sub-appsheet">
           <li><a href="{base}products/freelance/">自由工作者套件</a></li>
           <li><a href="{base}products/poultry/">白肉雞養殖紀錄系統</a></li>
+          <li><a href="{base}products/custom/">客製化系統開發</a></li>
           <li><span class="soon">個案管理系統<em>準備中</em></span></li>
         </ul>
       </li>
@@ -334,7 +335,7 @@ def r_callout(args, body):
                     raise SystemExit(f'::: callout buttons must look like "- [文字](網址)" (got "{item[:30]}")')
                 links.append((m.group(1), m.group(2)))
     cls = 'callout open' if args.strip() == 'open' else 'callout'
-    btns = ''.join(f'<a class="cta-btn{"" if i == 0 else " secondary"}" href="{u}" target="_blank" rel="noopener">{M.esc(t)}</a>\n        '
+    btns = ''.join(f'<a class="cta-btn{"" if i == 0 else " secondary"}" href="{u}"{"" if u.startswith("mailto:") else " target=\"_blank\" rel=\"noopener\""}>{M.esc(t)}</a>\n        '
                    for i, (t, u) in enumerate(links))
     cta = f'\n      <div class="cta-row">\n        {btns.rstrip()}\n      </div>' if links else ''
     return f'    <div class="{cls}">\n      {"<br><br>".join(paras)}{cta}\n    </div>\n'
