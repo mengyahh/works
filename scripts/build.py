@@ -28,7 +28,7 @@ LANG_NAME = {'zh': '中文', 'en': 'EN', 'ja': '日本語'}
 
 # Texts that belong to the site frame (navigation, buttons, back links). Page content lives in the Markdown files.
 STRINGS = {
-    'zh': {'menu': '選單', 'appsheet_menu': '展開 AppSheet 選單', 'freelance': '自由工作者套件', 'poultry': '白肉雞養殖紀錄系統',
+    'zh': {'menu': '選單', 'appsheet_menu': '展開 AppSheet 選單', 'freelance': '範例：自由工作者套件', 'poultry': '範例：白肉雞養殖紀錄系統',
            'custom': '客製化系統開發', 'case': '個案管理系統', 'events': '活動企劃', 'topics': '議題推廣', 'about': '關於',
            'contact': '聯絡', 'soon': '準備中', 'back_products': '← 回到 AppSheet 管理系統', 'back_home': '← 回到首頁',
            'copy': '複製 email', 'copied': '已複製', 'selected': '已選取，請按複製', 'lang_label': '語言'},
@@ -165,6 +165,8 @@ def nav_html(current, alts):
     contact = '#contact' if current in ('about', 'home') else f'{L}about.html#contact'
     switch = ' · '.join(
         (f'<a href="{alts[l]}" hreflang="{HTML_LANG[l]}" lang="{HTML_LANG[l]}"' + (' aria-current="true"' if l == LANG else '') + f'>{LANG_NAME[l]}</a>') for l in LANGS)
+    order = ['custom', 'freelance', 'poultry'] if LANG == 'zh' else ['freelance', 'poultry', 'custom']
+    sub_items = ''.join(f'          <li><a href="{L}products/{k}/">{S[k]}</a></li>\n' for k in order)
     return f'''<nav class="topbar">
   <div class="wrap">
     <p class="wordmark"><a href="{L}">under<span>story</span></a></p>
@@ -173,10 +175,7 @@ def nav_html(current, alts):
       <li class="has-sub">
         <a href="{L}products/">AppSheet</a><button type="button" class="sub-btn" aria-label="{S["appsheet_menu"]}" aria-expanded="false" aria-haspopup="true" aria-controls="sub-appsheet"><span class="caret" aria-hidden="true">▾</span></button>
         <ul class="sub" id="sub-appsheet">
-          <li><a href="{L}products/freelance/">{S["freelance"]}</a></li>
-          <li><a href="{L}products/poultry/">{S["poultry"]}</a></li>
-          <li><a href="{L}products/custom/">{S["custom"]}</a></li>
-          <li><span class="soon">{S["case"]}<em>{S["soon"]}</em></span></li>
+{sub_items}          <li><span class="soon">{S["case"]}<em>{S["soon"]}</em></span></li>
         </ul>
       </li>
       <li><span class="soon">{S["events"]}<em>{S["soon"]}</em></span></li>

@@ -1,10 +1,10 @@
 ---
 title: AppSheet 管理系統
 eyebrow: Products
-description: AppSheet 是 Google 開發的無程式碼應用程式平台，能快速從 Google Sheets、Excel 或其他資料來源建立客製化 App。這裡是用它打造的系統工具。
+description: 依你的工作或生活需求，用 Google 的 AppSheet 量身打造管理系統：可以從頭客製，也可以從現有的系統調整。
 ---
 
-AppSheet 是 Google 開發的無程式碼應用程式平台，能快速從 Google Sheets、Excel 或其他資料來源建立客製化 App。
+AppSheet 是 Google 開發的無程式碼應用程式平台，能快速從 Google Sheets、Excel 或其他資料來源建立客製化 App。Understory 的 AppSheet 管理系統，全面以**客製化**的方式提供：依你的工作或生活需求，打造一套屬於你的系統，累積的資料就存在你自己的 Google 試算表中，易於匯出取用。
 
 ::: points 功能與特色
 - **資料連結與視圖：**可連結 Google Sheets 或 Excel，產生表單、圖表、儀表板等行動友善介面。
@@ -14,5 +14,5 @@ AppSheet 是 Google 開發的無程式碼應用程式平台，能快速從 Googl
 :::
 
 ::: cards
-以 google 的服務 Appsheet 所打造的系統工具，最大特色在於累積的資料就存在google sheet（試算表）中，易於匯出取用。目前有兩個進行中的專案：
+下面是做好的範例系統，讓你看看 AppSheet 可以長成什麼樣子。你可以請我從頭為你客製一套，也可以以這些範例為基礎，調整成你需要的樣子。
 :::
