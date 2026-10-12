@@ -231,15 +231,19 @@
   .points li { margin: 0 0 6px; }
   .points strong { color: var(--moss); font-weight: 700; }
   .systems-title { font-size: 26px; margin: 48px 0 14px; }
-  .systems { margin-top: 28px; border-top: 1px solid var(--border); }
-  .system { padding: 28px 0; border-bottom: 1px solid var(--border); scroll-margin-top: 80px; max-width: 64ch; }
-  .system h3 { font-size: 20px; margin: 0 0 8px; color: var(--ink); }
-  .system p { font-size: 15px; color: var(--ink-soft); margin: 0 0 10px; }
-  .system .sys-for { font-size: 13px; color: var(--moss); font-weight: 700; }
+  .systems { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 28px; }
+  .system { position: relative; display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 22px 22px 18px; scroll-margin-top: 80px; transition: border-color .15s; }
+  .system:hover, .system:focus-within { border-color: var(--moss); }
+  .system h3 { font-size: 19px; margin: 0 0 10px; color: var(--ink); line-height: 1.4; }
+  .system p { font-size: 14px; color: var(--ink-soft); margin: 0 0 12px; }
+  .system .sys-for { font-size: 12.5px; color: var(--moss); font-weight: 700; }
   .product .sys-for { font-size: 14px; color: var(--moss); font-weight: 700; margin: -8px 0 18px; }
   .system h3 a { color: inherit; text-decoration: none; }
   .system h3 a:hover { color: var(--moss); }
-  .system .sys-more { margin-bottom: 0; }
+  .system h3 a::after { content: ""; position: absolute; inset: 0; }
+  .system .sys-more { margin: auto 0 0; padding-top: 6px; }
+  @media (max-width: 900px) { .systems { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 600px) { .systems { grid-template-columns: 1fr; } }
   .teaser-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 40px; }
   .teaser { background: var(--bg); padding: 24px 26px; text-decoration: none; display: block; }
   .teaser-row .teaser:last-child:nth-child(odd) { grid-column: 1 / -1; }
