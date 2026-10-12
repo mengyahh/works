@@ -28,7 +28,7 @@ LANG_NAME = {'zh': '中文', 'en': 'EN', 'ja': '日本語'}
 
 # Texts that belong to the site frame (navigation, buttons, back links). Page content lives in the Markdown files.
 STRINGS = {
-    'zh': {'menu': '選單', 'appsheet_menu': '展開 AppSheet 選單', 'freelance': '範例：自由工作者套件', 'poultry': '範例：白肉雞養殖紀錄系統',
+    'zh': {'menu': '選單', 'appsheet_menu': '展開 AppSheet 選單', 'freelance': '自由工作者套件', 'poultry': '白肉雞養殖紀錄系統',
            'custom': '客製化系統開發', 'case': '個案管理系統', 'events': '活動企劃', 'topics': '議題推廣', 'about': '關於',
            'contact': '聯絡', 'soon': '準備中', 'back_products': '← 回到 AppSheet 管理系統', 'back_home': '← 回到首頁',
            'copy': '複製 email', 'copied': '已複製', 'selected': '已選取，請按複製', 'lang_label': '語言'},
