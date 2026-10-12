@@ -72,7 +72,7 @@ description: （選填）搜尋結果的簡介
 
 ## AppSheet 總覽頁 `content/appsheet.md`
 
-網址是 `understory.mengyahh.com/products/`，導覽列的「AppSheet」點下去就是這一頁：最上面是 AppSheet 的介紹（`::: points 功能與特色` 是條列），下面是每個產品的小卡片。小卡片**自動**從各產品頁的設定產生（見下面的 `summary`、`status`、`order`），新增產品頁就會多一張。
+網址是 `understory.mengyahh.com/products/`，導覽列的「AppSheet」點下去就是這一頁：最上面是 AppSheet 客製化開發的介紹（`::: points 標題` 是條列），最後的 `::: systems 既有作品` 會**自動**列出 `content/products/` 裡每一個作品：標題、適用對象、一句話介紹（見下面的 `title`、`for`、`summary`、`order`），新增作品頁就會多一項，每個作品的露出方式都一樣。
 
 ## 產品頁 `content/products/<網址名稱>.md`
 
@@ -80,12 +80,13 @@ description: （選填）搜尋結果的簡介
 
 ```
 ---
-title: 給自由工作者的生活工作管理大師
-eyebrow: 範例 01                      ← 標題上方的小字
-description: 搜尋結果的簡介
-order: 1                              ← 總覽頁小卡片的順序（數字小的在前）
-summary: 一句話介紹                    ← 總覽頁小卡片上的文字
-status: 範例                          ← 小卡片上的狀態小標籤
+title: 自由工作收支管理系統
+eyebrow: 作品 · 自由接案管理          ← 標題上方的小字
+description: 搜尋結果的簡介（記得自然帶入使用者會搜尋的關鍵字）
+order: 2                              ← 總覽頁與首頁小卡片的順序（數字小的在前）
+for: 自由工作者、接案工作者            ← 適用對象（頁面標題下方、總覽頁都會顯示）
+summary: 一句話介紹                    ← 總覽頁與首頁小卡片上的文字
+status: 作品                          ← 首頁小卡片上的狀態小標籤
 status_style: open                    ← （選填）標籤用強調色
 ---
 
@@ -105,14 +106,14 @@ status_style: open                    ← （選填）標籤用強調色
 ::: note                            ← 灰色小字的補充說明
 :::
 
-::: callout open                    ← 「目前狀態」方塊（open ＝ 邊框用強調色；不寫就是一般樣式）
-**目前狀態：**……
+::: callout open                    ← 結尾的行動方塊（open ＝ 邊框用強調色；所有作品頁用同樣的說法）
+**想用這套系統？**……
 
 - [按鈕文字 →](https://網址)          ← 列表會變成按鈕，第一個是主要按鈕
 :::
 ```
 
-新增產品：複製一個 `.md` 改內容，首頁卡片、AppSheet 總覽頁的卡片和導覽列下拉選單會由 `build.py` 自動產生。首頁本身現在也是 Markdown（`content/index.md`）。
+新增作品：複製一個現有的 `.md` 改內容（最好保持同樣的區塊：適用對象、功能卡片、結尾方塊），首頁卡片與 AppSheet 總覽頁的清單會自動多一項；導覽列下拉選單要到 `scripts/build.py` 的 `nav_html()` 加上。所有作品的規格要一致。首頁本身現在也是 Markdown（`content/index.md`）。
 
 ## 英文版與日文版
 

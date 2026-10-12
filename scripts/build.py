@@ -28,17 +28,17 @@ LANG_NAME = {'zh': '中文', 'en': 'EN', 'ja': '日本語'}
 
 # Texts that belong to the site frame (navigation, buttons, back links). Page content lives in the Markdown files.
 STRINGS = {
-    'zh': {'menu': '選單', 'appsheet_menu': '展開 AppSheet 選單', 'freelance': '自由工作者套件', 'poultry': '白肉雞養殖紀錄系統',
+    'zh': {'menu': '選單', 'appsheet_menu': '展開 AppSheet 選單', 'freelance': '自由工作收支管理系統', 'poultry': '白肉雞養殖紀錄系統',
            'custom': '客製化系統開發', 'invoice': '內部請款系統', 'case': '個案管理系統', 'events': '活動企劃', 'topics': '議題推廣', 'about': '關於',
-           'contact': '聯絡', 'soon': '準備中', 'back_products': '← 回到 AppSheet 管理系統', 'back_home': '← 回到首頁',
+           'contact': '聯絡', 'soon': '準備中', 'back_products': '← 回到 AppSheet 管理系統', 'back_home': '← 回到首頁', 'for': '適用對象：', 'more': '了解更多 →',
            'copy': '複製 email', 'copied': '已複製', 'selected': '已選取，請按複製', 'lang_label': '語言'},
     'en': {'menu': 'Menu', 'appsheet_menu': 'Open the AppSheet menu', 'freelance': 'Freelancer Toolkit', 'poultry': 'Broiler Farm Records',
            'custom': 'Custom Systems', 'case': 'Case Management', 'events': 'Event Planning', 'topics': 'Issue Outreach', 'about': 'About',
-           'contact': 'Contact', 'soon': 'Soon', 'back_products': '← Back to AppSheet systems', 'back_home': '← Back to home',
+           'contact': 'Contact', 'soon': 'Soon', 'back_products': '← Back to AppSheet systems', 'back_home': '← Back to home', 'for': 'Suited for: ', 'more': 'Read more →',
            'copy': 'Copy email', 'copied': 'Copied', 'selected': 'Selected, press copy', 'lang_label': 'Language'},
     'ja': {'menu': 'メニュー', 'appsheet_menu': 'AppSheet メニューを開く', 'freelance': 'フリーランス向けツール', 'poultry': 'ブロイラー飼育記録システム',
            'custom': 'カスタムシステム開発', 'case': 'ケース管理システム', 'events': 'イベント企画', 'topics': '課題発信', 'about': 'About',
-           'contact': 'お問い合わせ', 'soon': '準備中', 'back_products': '← AppSheet システム一覧へ', 'back_home': '← ホームへ',
+           'contact': 'お問い合わせ', 'soon': '準備中', 'back_products': '← AppSheet システム一覧へ', 'back_home': '← ホームへ', 'for': '対象：', 'more': '詳しく見る →',
            'copy': 'メールをコピー', 'copied': 'コピーしました', 'selected': '選択しました。コピーしてください', 'lang_label': '言語'},
 }
 
@@ -165,13 +165,9 @@ def nav_html(current, alts):
     contact = '#contact' if current in ('about', 'home') else f'{L}about.html#contact'
     switch = ' · '.join(
         (f'<a href="{alts[l]}" hreflang="{HTML_LANG[l]}" lang="{HTML_LANG[l]}"' + (' aria-current="true"' if l == LANG else '') + f'>{LANG_NAME[l]}</a>') for l in LANGS)
-    order = ['custom', 'freelance', 'poultry'] if LANG == 'zh' else ['freelance', 'poultry', 'custom']
+    order = ['invoice', 'freelance', 'case', 'poultry'] if LANG == 'zh' else ['freelance', 'poultry', 'custom']
     sub_items = ''.join(f'          <li><a href="{L}products/{k}/">{S[k]}</a></li>\n' for k in order)
-    if LANG == 'zh':       # the case-management and invoice systems are listed (with their descriptions) on the AppSheet overview page
-        sub_items += ''.join(f'          <li><a href="{L}products/#{k}">{S[k]}</a></li>\n' for k in ('invoice', 'case'))
-        case_item = ''
-    else:
-        case_item = f'          <li><span class="soon">{S["case"]}<em>{S["soon"]}</em></span></li>\n'
+    case_item = '' if LANG == 'zh' else f'          <li><span class="soon">{S["case"]}<em>{S["soon"]}</em></span></li>\n'
     return f'''<nav class="topbar">
   <div class="wrap">
     <p class="wordmark"><a href="{L}">under<span>story</span></a></p>
@@ -461,6 +457,7 @@ def build_products(contact):
         slug = os.path.splitext(name)[0]
         meta, body = M.split_front(open(path, encoding='utf-8').read())
         title = meta.get('title') or slug
+        for_line = f'    <p class="sys-for">{S["for"]}{M.inline(meta["for"])}</p>\n' if meta.get('for') else ''
         first = body.find(':::')
         intro_text, rest = (body, '') if first < 0 else (body[:first], body[first:])
         intro = ''.join(f'<p>{M.inline(r)}</p>' for k, r in M.blocks(intro_text) if k == 'p')
@@ -477,7 +474,7 @@ def build_products(contact):
             else:
                 raise SystemExit(f'{name}: unknown block "::: {typ}" (known: features, screens, note, callout)')
         inner = (f'<section class="product">\n  <div class="wrap">\n    <p class="eyebrow">{M.esc(meta.get("eyebrow", ""))}</p>\n'
-                 f'    <h1>{M.inline(title)}</h1>\n    <div class="prose">{intro}</div>\n{"".join(parts)}'
+                 f'    <h1>{M.inline(title)}</h1>\n{for_line}    <div class="prose">{intro}</div>\n{"".join(parts)}'
                  f'    <p class="back"><a href="{L}products/">{S["back_products"]}</a></p>\n  </div>\n</section>\n\n{contact}')
         out = page(title=f'{title} | Understory', desc=meta.get('description') or title, path_key=f'product:{slug}', body=inner)
         dest = out_path('products', slug, 'index.html')
@@ -490,34 +487,28 @@ def build_products(contact):
 
 
 def r_systems(args, body):
-    """::: systems <title> : a lead-in paragraph, then one "### name {#anchor}" block per system.
-    Under each heading: the first paragraph is who it is for, the next ones describe it, "=> [text](url)" adds a link."""
-    lead, items = [], []
-    for kind, raw in M.blocks(body):
-        if kind == 'h3':
-            m = re.search(r'\s*\{#([\w-]+)\}\s*$', raw)
-            title = M.heading_text(raw[:m.start()] if m else raw)
-            items.append({'id': m.group(1) if m else '', 'title': title, 'paras': [], 'link': None})
-        elif not items:
-            if kind == 'p':
-                lead.append(raw)
-        elif kind == 'p' and raw.startswith('=>'):
-            lm = re.match(r'=>\s*\[([^\]]+)\]\(([^)\s]+)\)', raw)
-            if lm:
-                items[-1]['link'] = (lm.group(1), lm.group(2))
-        elif kind == 'p':
-            items[-1]['paras'].append(raw)
-    out = f'    <h2 class="systems-title">{M.inline(args)}</h2>\n' if args else ''
-    out += ''.join(f'    <p class="lede">{M.inline(p)}</p>\n' for p in lead)
+    """::: systems <title> : a lead-in paragraph, then one entry for every page in content/products/ (front matter: title, for, summary),
+    so that all works are shown the same way."""
+    lead = [raw for kind, raw in M.blocks(body) if kind == 'p']
+    works = []
+    for path in sorted(glob.glob(os.path.join(content_path('products'), '*.md'))):
+        name = os.path.basename(path)
+        if name.startswith('_'):
+            continue
+        pm, _ = M.split_front(open(path, encoding='utf-8').read())
+        works.append((int(pm.get('order', '99')), os.path.splitext(name)[0], pm))
+    nl = '\n'
+    out = f'    <h2 class="systems-title">{M.inline(args)}</h2>{nl}' if args else ''
+    out += ''.join(f'    <p class="lede">{M.inline(p)}</p>{nl}' for p in lead)
     rows = ''
-    for it in items:
-        sid = f' id="{it["id"]}"' if it['id'] else ''
-        paras = it['paras']
-        who = f'        <p class="sys-for">{M.inline(paras[0])}</p>\n' if paras else ''
-        desc = ''.join(f'        <p>{M.inline(p)}</p>\n' for p in paras[1:])
-        more = f'        <p class="sys-more"><a href="{it["link"][1]}">{M.esc(it["link"][0])}</a></p>\n' if it['link'] else ''
-        rows += f'      <article class="system"{sid}>\n        <h3>{M.inline(it["title"])}</h3>\n{who}{desc}{more}      </article>\n'
-    return out + f'    <div class="systems">\n{rows}    </div>\n'
+    for _, slug, pm in sorted(works, key=lambda w: w[0]):
+        who = f'        <p class="sys-for">{S["for"]}{M.inline(pm["for"])}</p>{nl}' if pm.get('for') else ''
+        title = M.inline(pm.get('title', slug))
+        summary = M.inline(pm.get('summary', ''))
+        rows += (f'      <article class="system" id="{slug}">{nl}        <h3><a href="{L}products/{slug}/">{title}</a></h3>{nl}{who}'
+                 f'        <p>{summary}</p>{nl}'
+                 f'        <p class="sys-more"><a href="{L}products/{slug}/">{S["more"]}</a></p>{nl}      </article>{nl}')
+    return out + f'    <div class="systems">{nl}{rows}    </div>{nl}'
 
 
 def build_products_index(contact):
@@ -768,3 +759,13 @@ if __name__ == '__main__':
             build_portfolio(contact)
         build_products(contact)
         build_products_index(contact)
+        if lang == 'zh':
+            # the 客製化系統開發 page was folded into the AppSheet overview: keep its old address alive
+            dest = out_path('products', 'custom', 'index.html')
+            os.makedirs(os.path.dirname(dest), exist_ok=True)
+            target = SITE + '/products/'
+            with open(dest, 'w', encoding='utf-8', newline='\n') as f:
+                f.write('<!doctype html>\n<html lang="zh-Hant-TW">\n<head>\n<meta charset="utf-8">\n<title>AppSheet 管理系統 | Understory</title>\n'
+                        f'<link rel="canonical" href="{target}">\n<meta http-equiv="refresh" content="0; url={target}">\n'
+                        '<meta name="viewport" content="width=device-width, initial-scale=1">\n</head>\n<body>\n'
+                        f'<p><a href="{target}">AppSheet 管理系統</a></p>\n</body>\n</html>\n')

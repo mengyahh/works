@@ -20,7 +20,7 @@ Understory · works by mengyahh
 ::: products Products
 ## AppSheet 客製化管理系統
 
-以 Google 的 AppSheet 依你的需求量身打造系統，最大特色在於累積的資料就存在 Google Sheets（試算表）中，易於匯出取用。可以從頭客製，也可以以現有的系統調整。下面是已完成的作品，也可以直接以它們為基礎客製化：
+以 Google 的 AppSheet 依你的需求客製化開發系統，最大特色在於累積的資料就存在 Google Sheets（試算表）中，易於匯出取用。也有幾個已完成的既有作品，可以直接買斷，或以它們為基礎再調整：
 
 => [認識 AppSheet 與客製化服務 →](products/)
 :::
