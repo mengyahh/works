@@ -24,6 +24,18 @@ description: 組織內部請款系統：同仁申請請款、產生請款單 PDF
 財會人員可以直接檢視匯款對象與匯款資料，加速審核與匯款的流程。
 :::
 
+::: screens App 實際畫面
+![請款申請表單，填寫請款日期、請款工作項目別與活動別](screenshots/invoice/invoice-1-form.png "請款申請表單")
+![請款列表，依科目別列出各筆請款摘要與應付總額](screenshots/invoice/invoice-2-list.png "請款列表")
+![請款明細，包含科目別、請款摘要、應付總額、預計付款日與付款方式](screenshots/invoice/invoice-3-detail.png "請款明細")
+![付款對象資料，記錄收款銀行與分行資訊](screenshots/invoice/invoice-4-payee.png "付款對象資料庫")
+![產生的請款單 PDF，含請款人、複核與審核欄位，可印出紙本](screenshots/invoice/invoice-5-pdf.png "請款單 PDF")
+
+---
+
+畫面中的資料皆為測試資料。
+:::
+
 ::: callout open
 **想用這套系統？**這是我已完成的作品之一：可以直接買斷使用，也可以以它為基礎做部分客製化，或依你的需求從頭客製一套新的。歡迎來信說明你的需求，也可以先申請試用。
 

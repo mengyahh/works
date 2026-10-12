@@ -1,16 +1,22 @@
 # 用 Markdown 改 Understory 的內容
 
 ```
+content/index.md                      首頁（index.html）
 content/about.md                      關於頁（about.html）
+content/appsheet.md                   AppSheet 總覽頁（導覽列的 AppSheet）：介紹、誰適合、提供的方式；底下的作品卡片自動產生
+content/products/invoice.md           作品頁：內部請款系統
+content/products/freelance.md         作品頁：自由工作收支管理系統
+content/products/case.md              作品頁：個案管理系統
+content/products/poultry.md           作品頁：白肉雞養殖紀錄系統
 content/portfolio/daodu-hexi.md       作品集頁（島讀河溪）：一個 .md 檔 ＝ 一個作品頁
 content/portfolio/lecheng.md          作品集頁（樂城生活節）
 content/portfolio/_專項（暫不顯示）.md   檔名開頭是 _ 的不會發布（先收起來的內容放這裡）
-content/appsheet.md                   AppSheet 總覽頁（導覽列的 AppSheet）
-content/products/freelance.md         產品頁：自由工作者管理大師
-content/products/poultry.md           產品頁：白肉雞養殖紀錄系統
+content/en/  content/ja/              英文版、日文版（檔名和結構與上面相同）
 ```
 
-首頁（`index.html`）還是手寫的 HTML，沒有改成 Markdown；它只放產品的簡短介紹，完整內容在產品頁。
+導覽列、按鈕、「適用對象」「了解更多」這類網站框架的文字不在 `.md` 裡，在 `scripts/build.py` 最上面的 `STRINGS`。
+
+**不要直接改產生出來的 HTML**（`index.html`、`about.html`、`products/`、`portfolio/`、`en/`、`ja/`）：下次建置會被蓋掉。改上面的 `.md`。
 
 ## 日常流程
 

@@ -30,6 +30,18 @@ description: 社福組織、機構與社工適用的個案管理系統：紀錄�
 組織可以檢視年度／月度的服務狀況，並評估社會影響力。
 :::
 
+::: screens App 實際畫面
+![個案登錄表，依在案中與已結案分組列出個案](screenshots/case/case-1-list.png "個案登錄表")
+![個案個人資料詳細頁，包含出生日期、年齡、聯絡方式與戶籍地址等](screenshots/case/case-2-profile.png "個案個人資料")
+![個案總表詳細內容，包含開案日期與原因、結案日期、類別與原因](screenshots/case/case-3-open-close.png "開案與結案資訊")
+![個案服務詳細紀錄，包含服務日期、方式、項目、紀錄與評估處遇](screenshots/case/case-4-service.png "服務紀錄與處遇")
+![儀錶板的年度安置人數長條圖](screenshots/case/case-5-dashboard.png "年度安置人數")
+
+---
+
+畫面中的資料皆為測試資料。
+:::
+
 ::: callout open
 **想用這套系統？**這是我已完成的作品之一：可以直接買斷使用，也可以以它為基礎做部分客製化，或依你的需求從頭客製一套新的。歡迎來信說明你的需求，也可以先申請試用。
 
