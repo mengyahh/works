@@ -29,7 +29,7 @@ LANG_NAME = {'zh': '中文', 'en': 'EN', 'ja': '日本語'}
 # Texts that belong to the site frame (navigation, buttons, back links). Page content lives in the Markdown files.
 STRINGS = {
     'zh': {'menu': '選單', 'appsheet_menu': '展開 AppSheet 選單', 'freelance': '自由工作者套件', 'poultry': '白肉雞養殖紀錄系統',
-           'custom': '客製化系統開發', 'case': '個案管理系統', 'events': '活動企劃', 'topics': '議題推廣', 'about': '關於',
+           'custom': '客製化系統開發', 'invoice': '內部請款系統', 'case': '個案管理系統', 'events': '活動企劃', 'topics': '議題推廣', 'about': '關於',
            'contact': '聯絡', 'soon': '準備中', 'back_products': '← 回到 AppSheet 管理系統', 'back_home': '← 回到首頁',
            'copy': '複製 email', 'copied': '已複製', 'selected': '已選取，請按複製', 'lang_label': '語言'},
     'en': {'menu': 'Menu', 'appsheet_menu': 'Open the AppSheet menu', 'freelance': 'Freelancer Toolkit', 'poultry': 'Broiler Farm Records',
@@ -167,6 +167,11 @@ def nav_html(current, alts):
         (f'<a href="{alts[l]}" hreflang="{HTML_LANG[l]}" lang="{HTML_LANG[l]}"' + (' aria-current="true"' if l == LANG else '') + f'>{LANG_NAME[l]}</a>') for l in LANGS)
     order = ['custom', 'freelance', 'poultry'] if LANG == 'zh' else ['freelance', 'poultry', 'custom']
     sub_items = ''.join(f'          <li><a href="{L}products/{k}/">{S[k]}</a></li>\n' for k in order)
+    if LANG == 'zh':       # the case-management and invoice systems are listed (with their descriptions) on the AppSheet overview page
+        sub_items += ''.join(f'          <li><a href="{L}products/#{k}">{S[k]}</a></li>\n' for k in ('invoice', 'case'))
+        case_item = ''
+    else:
+        case_item = f'          <li><span class="soon">{S["case"]}<em>{S["soon"]}</em></span></li>\n'
     return f'''<nav class="topbar">
   <div class="wrap">
     <p class="wordmark"><a href="{L}">under<span>story</span></a></p>
@@ -175,8 +180,7 @@ def nav_html(current, alts):
       <li class="has-sub">
         <a href="{L}products/">AppSheet</a><button type="button" class="sub-btn" aria-label="{S["appsheet_menu"]}" aria-expanded="false" aria-haspopup="true" aria-controls="sub-appsheet"><span class="caret" aria-hidden="true">▾</span></button>
         <ul class="sub" id="sub-appsheet">
-{sub_items}          <li><span class="soon">{S["case"]}<em>{S["soon"]}</em></span></li>
-        </ul>
+{sub_items}{case_item}        </ul>
       </li>
       <li><span class="soon">{S["events"]}<em>{S["soon"]}</em></span></li>
       <li><span class="soon">{S["topics"]}<em>{S["soon"]}</em></span></li>
@@ -485,6 +489,37 @@ def build_products(contact):
     return made
 
 
+def r_systems(args, body):
+    """::: systems <title> : a lead-in paragraph, then one "### name {#anchor}" block per system.
+    Under each heading: the first paragraph is who it is for, the next ones describe it, "=> [text](url)" adds a link."""
+    lead, items = [], []
+    for kind, raw in M.blocks(body):
+        if kind == 'h3':
+            m = re.search(r'\s*\{#([\w-]+)\}\s*$', raw)
+            title = M.heading_text(raw[:m.start()] if m else raw)
+            items.append({'id': m.group(1) if m else '', 'title': title, 'paras': [], 'link': None})
+        elif not items:
+            if kind == 'p':
+                lead.append(raw)
+        elif kind == 'p' and raw.startswith('=>'):
+            lm = re.match(r'=>\s*\[([^\]]+)\]\(([^)\s]+)\)', raw)
+            if lm:
+                items[-1]['link'] = (lm.group(1), lm.group(2))
+        elif kind == 'p':
+            items[-1]['paras'].append(raw)
+    out = f'    <h2 class="systems-title">{M.inline(args)}</h2>\n' if args else ''
+    out += ''.join(f'    <p class="lede">{M.inline(p)}</p>\n' for p in lead)
+    rows = ''
+    for it in items:
+        sid = f' id="{it["id"]}"' if it['id'] else ''
+        paras = it['paras']
+        who = f'        <p class="sys-for">{M.inline(paras[0])}</p>\n' if paras else ''
+        desc = ''.join(f'        <p>{M.inline(p)}</p>\n' for p in paras[1:])
+        more = f'        <p class="sys-more"><a href="{it["link"][1]}">{M.esc(it["link"][0])}</a></p>\n' if it['link'] else ''
+        rows += f'      <article class="system"{sid}>\n        <h3>{M.inline(it["title"])}</h3>\n{who}{desc}{more}      </article>\n'
+    return out + f'    <div class="systems">\n{rows}    </div>\n'
+
+
 def build_products_index(contact):
     """products/index.html : the AppSheet introduction (content/appsheet.md) plus a card for every product page."""
     if not os.path.isfile(content_path('appsheet.md')):
@@ -513,8 +548,10 @@ def build_products_index(contact):
                 cells += (f'      <a class="teaser" href="{L}products/{slug}/">\n        <p class="tname">{M.inline(pm.get("title", slug))}</p>\n'
                           f'        <p>{M.inline(pm.get("summary", ""))}</p>\n        {chip}\n      </a>\n')
             parts.append(f'    {lead}\n    <div class="teaser-row">\n{cells}    </div>\n')
+        elif typ == 'systems':
+            parts.append(r_systems(args, dbody))
         else:
-            raise SystemExit(f'content/appsheet.md: unknown block "::: {typ}" (known: points, cards)')
+            raise SystemExit(f'content/appsheet.md: unknown block "::: {typ}" (known: points, cards, systems)')
     inner = (f'<section class="product">\n  <div class="wrap">\n    <p class="eyebrow">{M.esc(meta.get("eyebrow", "Products"))}</p>\n'
              f'    <h1>{M.inline(meta.get("title", "AppSheet"))}</h1>\n    <div class="prose">{intro}</div>\n{"".join(parts)}'
              f'    <p class="back"><a href="{L}#appsheet">{S["back_home"]}</a></p>\n  </div>\n</section>\n\n{contact}')
