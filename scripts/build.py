@@ -486,10 +486,9 @@ def build_products(contact):
     return made
 
 
-def r_systems(args, body):
-    """::: systems <title> : a lead-in paragraph, then one entry for every page in content/products/ (front matter: title, for, summary),
-    so that all works are shown the same way."""
-    lead = [raw for kind, raw in M.blocks(body) if kind == 'p']
+def work_cards():
+    """One card for every page in content/products/ (front matter: title, for, summary, order), the same card everywhere:
+    on the AppSheet overview and on the home page."""
     works = []
     for path in sorted(glob.glob(os.path.join(content_path('products'), '*.md'))):
         name = os.path.basename(path)
@@ -498,8 +497,6 @@ def r_systems(args, body):
         pm, _ = M.split_front(open(path, encoding='utf-8').read())
         works.append((int(pm.get('order', '99')), os.path.splitext(name)[0], pm))
     nl = '\n'
-    out = f'    <h2 class="systems-title">{M.inline(args)}</h2>{nl}' if args else ''
-    out += ''.join(f'    <p class="lede">{M.inline(p)}</p>{nl}' for p in lead)
     rows = ''
     for _, slug, pm in sorted(works, key=lambda w: w[0]):
         who = f'        <p class="sys-for">{S["for"]}{M.inline(pm["for"])}</p>{nl}' if pm.get('for') else ''
@@ -508,7 +505,33 @@ def r_systems(args, body):
         rows += (f'      <article class="system" id="{slug}">{nl}        <h3><a href="{L}products/{slug}/">{title}</a></h3>{nl}{who}'
                  f'        <p>{summary}</p>{nl}'
                  f'        <p class="sys-more"><a href="{L}products/{slug}/">{S["more"]}</a></p>{nl}      </article>{nl}')
-    return out + f'    <div class="systems">{nl}{rows}    </div>{nl}'
+    return f'    <div class="systems">{nl}{rows}    </div>{nl}'
+
+
+def teaser_cards():
+    """The previous two-column teasers (with a status chip). Still used by the English and Japanese home pages until those are updated."""
+    cards = []
+    for path in sorted(glob.glob(os.path.join(content_path('products'), '*.md'))):
+        name = os.path.basename(path)
+        if name.startswith('_'):
+            continue
+        pm, _ = M.split_front(open(path, encoding='utf-8').read())
+        cards.append((int(pm.get('order', '99')), os.path.splitext(name)[0], pm))
+    cells = ''
+    for _, slug, pm in sorted(cards, key=lambda c: c[0]):
+        chip = f'<span class="status-chip{" open" if pm.get("status_style") == "open" else ""}">{M.esc(pm.get("status", ""))}</span>' if pm.get('status') else ''
+        cells += (f'      <a class="teaser" href="{L}products/{slug}/">\n        <p class="tname">{M.inline(pm.get("title", slug))}</p>\n'
+                  f'        <p>{M.inline(pm.get("summary", ""))}</p>\n        {chip}\n      </a>\n')
+    return f'    <div class="teaser-row">\n{cells}    </div>\n'
+
+
+def r_systems(args, body):
+    """::: systems <title> : a lead-in paragraph, then the card of every work in content/products/."""
+    lead = [raw for kind, raw in M.blocks(body) if kind == 'p']
+    nl = '\n'
+    out = f'    <h2 class="systems-title">{M.inline(args)}</h2>{nl}' if args else ''
+    out += ''.join(f'    <p class="lede">{M.inline(p)}</p>{nl}' for p in lead)
+    return out + work_cards()
 
 
 def build_products_index(contact):
@@ -613,21 +636,10 @@ def build_home(contact_unused=None):
             lede = ' '.join(M.inline(r) for k, r in bl if k == 'p' and not r.startswith('=>'))
             more = next((r for k, r in bl if k == 'p' and r.startswith('=>')), None)
             mm = re.match(r'=>\s*\[([^\]]+)\]\(([^)\s]+)\)', more) if more else None
-            cards = []
-            for path in sorted(glob.glob(os.path.join(content_path('products'), '*.md'))):
-                name = os.path.basename(path)
-                if name.startswith('_'):
-                    continue
-                pm, _ = M.split_front(open(path, encoding='utf-8').read())
-                cards.append((int(pm.get('order', '99')), os.path.splitext(name)[0], pm))
-            cells = ''
-            for _, slug, pm in sorted(cards, key=lambda c: c[0]):
-                chip = f'<span class="status-chip{" open" if pm.get("status_style") == "open" else ""}">{M.esc(pm.get("status", ""))}</span>' if pm.get('status') else ''
-                cells += (f'      <a class="teaser" href="{L}products/{slug}/">\n        <p class="tname">{M.inline(pm.get("title", slug))}</p>\n'
-                          f'        <p>{M.inline(pm.get("summary", ""))}</p>\n        {chip}\n      </a>\n')
+            cells = work_cards() if LANG == 'zh' else teaser_cards()
             more_html = f'    <p class="more"><a href="{mm.group(2)}">{M.esc(mm.group(1))}</a></p>\n' if mm else ''
             parts.append(f'<section class="prod-intro" id="appsheet">\n  <div class="wrap">\n    <p class="eyebrow">{M.esc(args or "Products")}</p>\n'
-                         f'    <h2>{M.inline(M.heading_text(h2))}</h2>\n    <p class="lede">\n      {lede}\n    </p>\n    <div class="teaser-row">\n{cells}    </div>\n{more_html}  </div>\n</section>\n')
+                         f'    <h2>{M.inline(M.heading_text(h2))}</h2>\n    <p class="lede">\n      {lede}\n    </p>\n{cells}{more_html}  </div>\n</section>\n')
         elif typ == 'about':
             h2 = next(r for k, r in bl if k == 'h2')
             ps = ''
