@@ -32,11 +32,11 @@ STRINGS = {
            'custom': '客製化系統開發', 'invoice': '內部請款系統', 'case': '個案管理系統', 'events': '活動企劃', 'topics': '議題推廣', 'about': '關於',
            'contact': '聯絡', 'soon': '準備中', 'back_products': '← 回到 AppSheet 管理系統', 'back_home': '← 回到首頁', 'for': '適用對象：', 'more': '了解更多 →',
            'copy': '複製 email', 'copied': '已複製', 'selected': '已選取，請按複製', 'lang_label': '語言'},
-    'en': {'menu': 'Menu', 'appsheet_menu': 'Open the AppSheet menu', 'freelance': 'Freelancer Toolkit', 'poultry': 'Broiler Farm Records',
-           'custom': 'Custom Systems', 'case': 'Case Management', 'events': 'Event Planning', 'topics': 'Issue Outreach', 'about': 'About',
+    'en': {'menu': 'Menu', 'appsheet_menu': 'Open the AppSheet menu', 'freelance': 'Freelancer Income & Expense System', 'invoice': 'Payment Request System', 'poultry': 'Broiler Farm Record System',
+           'custom': 'Custom Systems', 'case': 'Case Management System', 'events': 'Event Planning', 'topics': 'Issue Outreach', 'about': 'About',
            'contact': 'Contact', 'soon': 'Soon', 'back_products': '← Back to AppSheet systems', 'back_home': '← Back to home', 'for': 'Suited for: ', 'more': 'Read more →',
            'copy': 'Copy email', 'copied': 'Copied', 'selected': 'Selected, press copy', 'lang_label': 'Language'},
-    'ja': {'menu': 'メニュー', 'appsheet_menu': 'AppSheet メニューを開く', 'freelance': 'フリーランス向けツール', 'poultry': 'ブロイラー飼育記録システム',
+    'ja': {'menu': 'メニュー', 'appsheet_menu': 'AppSheet メニューを開く', 'freelance': 'フリーランス収支管理システム', 'invoice': '社内支払申請システム', 'poultry': '肉用鶏 飼育記録システム',
            'custom': 'カスタムシステム開発', 'case': 'ケース管理システム', 'events': 'イベント企画', 'topics': '課題発信', 'about': 'About',
            'contact': 'お問い合わせ', 'soon': '準備中', 'back_products': '← AppSheet システム一覧へ', 'back_home': '← ホームへ', 'for': '対象：', 'more': '詳しく見る →',
            'copy': 'メールをコピー', 'copied': 'コピーしました', 'selected': '選択しました。コピーしてください', 'lang_label': '言語'},
@@ -165,9 +165,9 @@ def nav_html(current, alts):
     contact = '#contact' if current in ('about', 'home') else f'{L}about.html#contact'
     switch = ' · '.join(
         (f'<a href="{alts[l]}" hreflang="{HTML_LANG[l]}" lang="{HTML_LANG[l]}"' + (' aria-current="true"' if l == LANG else '') + f'>{LANG_NAME[l]}</a>') for l in LANGS)
-    order = ['invoice', 'freelance', 'case', 'poultry'] if LANG == 'zh' else ['freelance', 'poultry', 'custom']
+    order = ['invoice', 'freelance', 'case', 'poultry']
     sub_items = ''.join(f'          <li><a href="{L}products/{k}/">{S[k]}</a></li>\n' for k in order)
-    case_item = '' if LANG == 'zh' else f'          <li><span class="soon">{S["case"]}<em>{S["soon"]}</em></span></li>\n'
+    case_item = ''
     return f'''<nav class="topbar">
   <div class="wrap">
     <p class="wordmark"><a href="{L}">under<span>story</span></a></p>
@@ -384,7 +384,7 @@ def contact_html(body, email):
                     raise SystemExit(f'::: contact links must look like "- [文字](網址)" (got "{item[:30]}")')
                 links += f'      <a href="{m.group(2)}">{M.esc(m.group(1))}</a>\n'
     return (f'<section class="contact" id="contact">\n  <div class="wrap">\n    <h2>{h2}</h2>\n    <p class="lead">{lead}</p>\n'
-            f'    <div class="mailbox">\n      <span class="addr" id="addr">{M.esc(email)}</span>\n      <button type="button" id="copy">複製 email</button>\n    </div>\n'
+            f'    <div class="mailbox">\n      <span class="addr" id="addr">{M.esc(email)}</span>\n      <button type="button" id="copy">{S["copy"]}</button>\n    </div>\n'
             f'    <div class="links">\n{links}    </div>\n  </div>\n</section>\n')
 
 
@@ -509,23 +509,6 @@ def work_cards():
     return f'    <div class="systems">{nl}{rows}    </div>{nl}'
 
 
-def teaser_cards():
-    """The previous two-column teasers (with a status chip). Still used by the English and Japanese home pages until those are updated."""
-    cards = []
-    for path in sorted(glob.glob(os.path.join(content_path('products'), '*.md'))):
-        name = os.path.basename(path)
-        if name.startswith('_'):
-            continue
-        pm, _ = M.split_front(open(path, encoding='utf-8').read())
-        cards.append((int(pm.get('order', '99')), os.path.splitext(name)[0], pm))
-    cells = ''
-    for _, slug, pm in sorted(cards, key=lambda c: c[0]):
-        chip = f'<span class="status-chip{" open" if pm.get("status_style") == "open" else ""}">{M.esc(pm.get("status", ""))}</span>' if pm.get('status') else ''
-        cells += (f'      <a class="teaser" href="{L}products/{slug}/">\n        <p class="tname">{M.inline(pm.get("title", slug))}</p>\n'
-                  f'        <p>{M.inline(pm.get("summary", ""))}</p>\n        {chip}\n      </a>\n')
-    return f'    <div class="teaser-row">\n{cells}    </div>\n'
-
-
 def r_systems(args, body):
     """::: systems <title> : a lead-in paragraph, then the card of every work in content/products/."""
     lead = [raw for kind, raw in M.blocks(body) if kind == 'p']
@@ -637,7 +620,7 @@ def build_home(contact_unused=None):
             lede = ' '.join(M.inline(r) for k, r in bl if k == 'p' and not r.startswith('=>'))
             more = next((r for k, r in bl if k == 'p' and r.startswith('=>')), None)
             mm = re.match(r'=>\s*\[([^\]]+)\]\(([^)\s]+)\)', more) if more else None
-            cells = work_cards() if LANG == 'zh' else teaser_cards()
+            cells = work_cards()
             more_html = f'    <p class="more"><a href="{mm.group(2)}">{M.esc(mm.group(1))}</a></p>\n' if mm else ''
             parts.append(f'<section class="prod-intro" id="appsheet">\n  <div class="wrap">\n    <p class="eyebrow">{M.esc(args or "Products")}</p>\n'
                          f'    <h2>{M.inline(M.heading_text(h2))}</h2>\n    <p class="lede">\n      {lede}\n    </p>\n{cells}{more_html}  </div>\n</section>\n')
@@ -772,13 +755,13 @@ if __name__ == '__main__':
             build_portfolio(contact)
         build_products(contact)
         build_products_index(contact)
-        if lang == 'zh':
+        if True:
             # the 客製化系統開發 page was folded into the AppSheet overview: keep its old address alive
             dest = out_path('products', 'custom', 'index.html')
             os.makedirs(os.path.dirname(dest), exist_ok=True)
-            target = SITE + '/products/'
+            target = SITE + L + 'products/'
             with open(dest, 'w', encoding='utf-8', newline='\n') as f:
-                f.write('<!doctype html>\n<html lang="zh-Hant-TW">\n<head>\n<meta charset="utf-8">\n<title>AppSheet 管理系統 | Understory</title>\n'
+                f.write(f'<!doctype html>\n<html lang="{HTML_LANG[LANG]}">\n<head>\n<meta charset="utf-8">\n<title>AppSheet | Understory</title>\n<meta name="robots" content="noindex">\n'
                         f'<link rel="canonical" href="{target}">\n<meta http-equiv="refresh" content="0; url={target}">\n'
                         '<meta name="viewport" content="width=device-width, initial-scale=1">\n</head>\n<body>\n'
                         f'<p><a href="{target}">AppSheet 管理系統</a></p>\n</body>\n</html>\n')

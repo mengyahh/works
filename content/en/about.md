@@ -48,27 +48,27 @@ The organisations and projects I work with are mostly about **humanities, ecolog
 Each project involves more than one kind of work.
 
 ### Government policy and knowledge-outreach projects
-Proposals, project management, main point of contact
+Content planning and proposals, project management, main point of contact (internal and external)
 
-### Helping an organisation go digital
-Digital mindset training, building the official website
+### 2024– Digital transformation and improvement for a micro non-profit
+Mindset coaching, designing internal workflows, building websites or systems
 
-### Website for a non-profit [Taiwan Heritage Society](https://www.thstaiwanheritage.org.tw/)
+### 2025 Website for a non-profit [Taiwan Heritage Society](https://www.thstaiwanheritage.org.tw/)
 Domain purchase and DNS setup, visual design, building the site, migrating the data
 
-### Security handbook [Information Security Guide for NPOs (in Chinese)](https://www.xn--npo-0i3er88a2jlth5e.tw/)
-Writing the content (with AI), illustrations, layout, web version
-
-### Building up and promoting cultural-policy content [Taiwan Cultural Route (in Chinese)](https://twculturalroute.boch.gov.tw/home/zh-tw)
+### 2024–2025 Building up and promoting cultural-policy content [Taiwan Cultural Route (in Chinese)](https://twculturalroute.boch.gov.tw/home/zh-tw)
 Turning cultural-policy theory into plain language, event photography, video editing, graphic design
 
-### Research on the history and industries of a river basin
+### 2025 Security handbook [Information Security Guide for NPOs (in Chinese)](https://www.xn--npo-0i3er88a2jlth5e.tw/)
+Writing the content (with AI), illustrations, layout, web version
+
+### 2024 Research on the history and industrial development of a river basin
 Literature collection, organising data, summarising talks and meetings
 
-### Running a market [Lecheng Life Festival 樂城生活節 (in Chinese)](/portfolio/lecheng/)
+### 2023 Running a market [Lecheng Life Festival 樂城生活節 (in Chinese)](/portfolio/lecheng/)
 Planning, managing and liaising with stalls, social media graphics, graphic design for printed materials
 
-### Making content about stream issues [Dao Du He Xi 島讀河溪 (in Chinese)](/portfolio/daodu-hexi/)
+### 2021–2023 Making content about stream issues [Dao Du He Xi 島讀河溪 (in Chinese)](/portfolio/daodu-hexi/)
 Teaching slides, a themed website, video production and editing, social media posts, teaching assistant at events, leading school classes
 
 ---
@@ -79,10 +79,10 @@ Not sure what you want yet? That's fine — let's just talk. Often it's only aft
 ::: process How we work
 ## How we do it together
 
-Understand first, then get to work.
+Get to know and understand first, then talk it through and think about how to do it.
 
 ### Let's talk
-A free 30-minute chat. Tell me what you're running into.
+A one-hour first chat. Tell me what you're thinking and what you need.
 
 ### Get on site
 I watch how things are actually done, look at the data you already have, and talk to the people involved.

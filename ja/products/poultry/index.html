@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>肉用鶏 飼育記録システム | Understory</title>
-<meta name="description" content="肉用鶏を育てる中小規模の農家向けに、毎日の飼育記録、ロットごとの集計、分析グラフをまとめたツール。データは自分の手元に残ります。開発中です。">
+<meta name="description" content="肉用鶏を育てる中小規模の農家向けに、毎日の飼育記録、ロットごとの集計、分析グラフをまとめたツール。データは自分の手元に残ります。すぐ使えるバージョンがあり、ご要望に合わせて調整もできます。">
 <meta name="robots" content="noindex">
 <link rel="canonical" href="https://understory.mengyahh.com/ja/products/poultry/">
 <link rel="alternate" hreflang="zh-Hant-TW" href="https://understory.mengyahh.com/products/poultry/">
@@ -14,7 +14,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Understory">
 <meta property="og:title" content="肉用鶏 飼育記録システム | Understory">
-<meta property="og:description" content="肉用鶏を育てる中小規模の農家向けに、毎日の飼育記録、ロットごとの集計、分析グラフをまとめたツール。データは自分の手元に残ります。開発中です。">
+<meta property="og:description" content="肉用鶏を育てる中小規模の農家向けに、毎日の飼育記録、ロットごとの集計、分析グラフをまとめたツール。データは自分の手元に残ります。すぐ使えるバージョンがあり、ご要望に合わせて調整もできます。">
 <meta property="og:url" content="https://understory.mengyahh.com/ja/products/poultry/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="/assets/site.css">
@@ -30,10 +30,10 @@
       <li class="has-sub">
         <a href="/ja/products/">AppSheet</a><button type="button" class="sub-btn" aria-label="AppSheet メニューを開く" aria-expanded="false" aria-haspopup="true" aria-controls="sub-appsheet"><span class="caret" aria-hidden="true">▾</span></button>
         <ul class="sub" id="sub-appsheet">
-          <li><a href="/ja/products/freelance/">フリーランス向けツール</a></li>
-          <li><a href="/ja/products/poultry/">ブロイラー飼育記録システム</a></li>
-          <li><a href="/ja/products/custom/">カスタムシステム開発</a></li>
-          <li><span class="soon">ケース管理システム<em>準備中</em></span></li>
+          <li><a href="/ja/products/invoice/">社内支払申請システム</a></li>
+          <li><a href="/ja/products/freelance/">フリーランス収支管理システム</a></li>
+          <li><a href="/ja/products/case/">ケース管理システム</a></li>
+          <li><a href="/ja/products/poultry/">肉用鶏 飼育記録システム</a></li>
         </ul>
       </li>
       <li><span class="soon">イベント企画<em>準備中</em></span></li>
@@ -47,9 +47,10 @@
 
 <section class="product">
   <div class="wrap">
-    <p class="eyebrow">Product 02 · 開発中</p>
+    <p class="eyebrow">既存の作品 · 肉用鶏の飼育</p>
     <h1>肉用鶏 飼育記録システム</h1>
-    <div class="prose"><p><strong>肉用鶏 飼育記録システム</strong>は、<strong>肉用鶏を育てる中小規模の農家</strong>のために作っている記録ツールです。データは自分の手元に残り、特定の機器メーカーにも縛られません。</p></div>
+    <p class="sys-for">対象：肉用鶏の契約農家、ウォーターカーテン式の鶏舎、いまは紙で記録している農家</p>
+    <div class="prose"><p><strong>肉用鶏 飼育記録システム</strong>は、<strong>肉用鶏を育てる中小規模の農家</strong>のために作った記録ツールです。データは自分の手元に残り、特定の機器メーカーにも縛られません。</p></div>
     <div class="feature-grid">
       <div class="feature">
         <h3>毎日の記録</h3>
@@ -63,14 +64,35 @@
         <h3>分析グラフ</h3>
         <p>ロットごとの数字をグラフにして、ロット同士の成績をくらべたり、次のロットで見直すところを見つけたりできます。</p>
       </div>
-      <div class="feature">
-        <h3>データは自分の手元に</h3>
-        <p>特定の環境制御メーカーに依存しないので、機器やシステムを変えてもデータがなくなりません。</p>
-      </div>
     </div>
-    <p class="reference-note">対象は台湾の中南部で契約飼育をしている農家さん（ウォーターカーテン式の鶏舎、アーバーエイカーやロスなどの主力品種）で、なんでも使える汎用の畜産ツールではありません。現場での仕事の経験から出発して、本当に必要なことに合うものを作っています。ただ記録するだけではなく、グラフでロットごとの変化を見て、改善できるところや調整できるところを見つけ、育成率を上げていくためのツールです。</p>
-    <div class="callout">
-      <strong>現在の状況：</strong> 開発中で、トライアルや購読はまだ受け付けていません。公開されたらすぐ知りたい方は、ぜひ<a href="#contact">メール</a>をください。
+    <div class="screens-block">
+      <p class="chart-title">アプリの画面</p>
+      <div class="screens-grid">
+        <div class="screen-shot">
+          <img src="/screenshots/poultry/poultry-1-daily.png" alt="毎日の記録の一覧。日付と日齢ごとに、死亡羽数の合計を表示">
+          <p>毎日の記録</p>
+        </div>
+        <div class="screen-shot">
+          <img src="/screenshots/poultry/poultry-2-env.png" alt="記録の追加フォーム。記録時間、鶏舎の棟、天気を入力">
+          <p>記録の追加</p>
+        </div>
+        <div class="screen-shot">
+          <img src="/screenshots/poultry/poultry-3-water.png" alt="飲水の記録の追加。開始時間、終了時間、飲水時間を入力">
+          <p>飲水の記録</p>
+        </div>
+        <div class="screen-shot">
+          <img src="/screenshots/poultry/poultry-4-menu.png" alt="メニュー。新しいロットの作成、所在地と目標室温の設定">
+          <p>ロットと設定</p>
+        </div>
+      </div>
+      <p class="chart-caption">画面に出ているデータは、すべてテスト用のデータです。</p>
+    </div>
+    <p class="reference-note">対象は肉用鶏の契約農家（ウォーターカーテン式の鶏舎、アーバーエイカーやロスなどの主力品種）で、なんでも使える汎用の畜産ツールではありません。</p>
+    <div class="callout open">
+      <strong>このシステムを使ってみませんか？</strong> そのまま買い取って使うことも、これをベースに一部をカスタマイズすることも、ご要望に合わせて一から新しく作ることもできます。トライアルの申し込みや、ご要望のご相談は、メールでどうぞ。
+      <div class="cta-row">
+        <a class="cta-btn" href="mailto:mengyahh@gmail.com">メールでトライアルを申し込む・相談する →</a>
+      </div>
     </div>
     <p class="back"><a href="/ja/products/">← AppSheet システム一覧へ</a></p>
   </div>
@@ -82,7 +104,7 @@
     <p class="lead">いま困っていることを聞かせてください。何をするかは、一緒に決めましょう。</p>
     <div class="mailbox">
       <span class="addr" id="addr">mengyahh@gmail.com</span>
-      <button type="button" id="copy">複製 email</button>
+      <button type="button" id="copy">メールをコピー</button>
     </div>
     <div class="links">
       <a href="https://www.instagram.com/mengyahh">Instagram ↗</a>

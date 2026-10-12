@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Understory · works by mengyahh</title>
-<meta name="description" content="Understory は mengyahh の制作・受託ブランドです。フリーランス向けの生活・仕事管理ツールと、肉用鶏の飼育記録システム。見落としがちな日々の記録を、読んで使えるツールにします。">
+<meta name="description" content="Understory は mengyahh の制作・受託ブランドです。ご要望に合わせて AppSheet の管理システムをカスタム開発し、見落としがちな日々の記録を、読んで使えるツールにします。">
 <meta name="robots" content="noindex">
 <link rel="canonical" href="https://understory.mengyahh.com/ja/">
 <link rel="alternate" hreflang="zh-Hant-TW" href="https://understory.mengyahh.com/">
@@ -14,7 +14,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Understory">
 <meta property="og:title" content="Understory · works by mengyahh">
-<meta property="og:description" content="Understory は mengyahh の制作・受託ブランドです。フリーランス向けの生活・仕事管理ツールと、肉用鶏の飼育記録システム。見落としがちな日々の記録を、読んで使えるツールにします。">
+<meta property="og:description" content="Understory は mengyahh の制作・受託ブランドです。ご要望に合わせて AppSheet の管理システムをカスタム開発し、見落としがちな日々の記録を、読んで使えるツールにします。">
 <meta property="og:url" content="https://understory.mengyahh.com/ja/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="/assets/home.css">
@@ -30,10 +30,10 @@
       <li class="has-sub">
         <a href="/ja/products/">AppSheet</a><button type="button" class="sub-btn" aria-label="AppSheet メニューを開く" aria-expanded="false" aria-haspopup="true" aria-controls="sub-appsheet"><span class="caret" aria-hidden="true">▾</span></button>
         <ul class="sub" id="sub-appsheet">
-          <li><a href="/ja/products/freelance/">フリーランス向けツール</a></li>
-          <li><a href="/ja/products/poultry/">ブロイラー飼育記録システム</a></li>
-          <li><a href="/ja/products/custom/">カスタムシステム開発</a></li>
-          <li><span class="soon">ケース管理システム<em>準備中</em></span></li>
+          <li><a href="/ja/products/invoice/">社内支払申請システム</a></li>
+          <li><a href="/ja/products/freelance/">フリーランス収支管理システム</a></li>
+          <li><a href="/ja/products/case/">ケース管理システム</a></li>
+          <li><a href="/ja/products/poultry/">肉用鶏 飼育記録システム</a></li>
         </ul>
       </li>
       <li><span class="soon">イベント企画<em>準備中</em></span></li>
@@ -50,12 +50,12 @@
     <p class="eyebrow">Understory · works by mengyahh</p>
     <h1>There's always an understory.</h1>
     <p class="lede">
-      Meng Ya です。フリーランス歴5年の、ちょっと変わった働き方をしています。まず現場の状況をしっかり理解して、本当の困りごとを見つけてから、何をどう作るかを一緒に決めていきます。分析、企画、制作まで、まるごとお手伝いします。
+      Meng Ya です。フリーランス歴5年の、ちょっと変わった働き方をしています。「最終的な成果物」だけを見ると、私の専門が何なのかわかりにくくて、なんでも屋に見えるかもしれません。<br>私の仕事は、コンサルタントでもあり、伴走者でもあります。言われたとおりに作るだけのコンテンツ制作者ではありません。あなたのことを理解して、本当の困りごとを見つけてから、何をどう作るかを決めます。分析、企画、制作まで、まるごとお手伝いします。
     </p>
     <ul class="offer">
-      <li><strong>AppSheet 管理システム</strong><span>仕事でも暮らしでも、システムに記録して今の状況を見える化。たまったデータは自分の手元に残ります。</span></li>
+      <li><strong>AppSheet カスタム管理システム</strong><span>ご要望に合わせて制作します。簡単でも複雑でも大丈夫。システムで状況を整理して確認でき、たまったデータは自分の手元に残ります。</span></li>
       <li><strong>イベント企画</strong><span>講座、小さなマルシェ、ワークショップの企画・運営。SNS用の投稿画像や印刷物も作れます。</span></li>
-      <li><strong>地域の魅力発信</strong><span>チラシ、冊子、テーマサイト、動画などで、その土地のすてきなストーリーを伝えます。</span></li>
+      <li><strong>地域の魅力発信</strong><span>チラシ、冊子、テーマサイト、動画で、ストーリーを掘り起こして伝えます。</span></li>
     </ul>
     <p class="cta">
       <a class="btn" href="/ja/about.html">もっと見る →</a>
@@ -67,28 +67,37 @@
 <section class="prod-intro" id="appsheet">
   <div class="wrap">
     <p class="eyebrow">Products</p>
-    <h2>AppSheet 管理システム</h2>
+    <h2>AppSheet カスタム管理システム</h2>
     <p class="lede">
-      Google の AppSheet で作ったシステムツールです。いちばんの特徴は、たまったデータが Google スプレッドシートに残るので、書き出しや活用がしやすいこと。いま進めているプロジェクトは2つです。
+      Google の AppSheet で、ご要望に合わせてシステムを作ります。いちばんの特徴は、たまったデータが Google スプレッドシートに残るので、書き出しや活用がしやすいこと。参考にしたり試したりできる既存の作品も、いくつかあります。そのまま買い取ることも、ベースにして調整することも、新しく一から作ることもできます。
     </p>
-    <div class="teaser-row">
-      <a class="teaser" href="/ja/products/freelance/">
-        <p class="tname">フリーランスのための生活・仕事マネージャー</p>
-        <p>案件、作業時間、多通貨の家計簿を、ひとつのツールで</p>
-        <span class="status-chip open">無料トライアル</span>
-      </a>
-      <a class="teaser" href="/ja/products/poultry/">
-        <p class="tname">肉用鶏 飼育記録システム</p>
-        <p>中小規模の契約農家向け。毎日の飼育記録と飼料要求率の分析</p>
-        <span class="status-chip">開発中</span>
-      </a>
-      <a class="teaser" href="/ja/products/custom/">
-        <p class="tname">カスタムシステム開発</p>
-        <p>完成済みのシステムはすぐ使えます。ご要望に合わせて作ることもできます</p>
-        <span class="status-chip">ご相談ください</span>
-      </a>
+    <div class="systems">
+      <article class="system" id="invoice">
+        <h3><a href="/ja/products/invoice/">社内支払申請システム</a></h3>
+        <p class="sys-for">対象：一人会社、小規模な組織、中小規模の組織</p>
+        <p>社内で支払いを申請して申請書PDFを出力。経理担当者は振込先の情報をそのまま確認できます</p>
+        <p class="sys-more"><a href="/ja/products/invoice/">詳しく見る →</a></p>
+      </article>
+      <article class="system" id="freelance">
+        <h3><a href="/ja/products/freelance/">フリーランス収支管理システム</a></h3>
+        <p class="sys-for">対象：フリーランス、案件ベースで働く人、収入源が複数ある人、複数の通貨で支出する人</p>
+        <p>案件管理、作業時間の記録、多通貨の収支記帳とグラフを、ひとつのツールで</p>
+        <p class="sys-more"><a href="/ja/products/freelance/">詳しく見る →</a></p>
+      </article>
+      <article class="system" id="case">
+        <h3><a href="/ja/products/case/">ケース管理システム</a></h3>
+        <p class="sys-for">対象：社会福祉の組織、福祉施設、ソーシャルワーカー</p>
+        <p>ケースの情報を記録して、年間・月間のサービス状況と社会的インパクトを確認できます</p>
+        <p class="sys-more"><a href="/ja/products/case/">詳しく見る →</a></p>
+      </article>
+      <article class="system" id="poultry">
+        <h3><a href="/ja/products/poultry/">肉用鶏 飼育記録システム</a></h3>
+        <p class="sys-for">対象：肉用鶏の契約農家、ウォーターカーテン式の鶏舎、いまは紙で記録している農家</p>
+        <p>契約農家向けの、毎日の飼育記録、飼料要求率と育成率の集計、分析グラフ</p>
+        <p class="sys-more"><a href="/ja/products/poultry/">詳しく見る →</a></p>
+      </article>
     </div>
-    <p class="more"><a href="/ja/products/">AppSheet と全プロダクトについて →</a></p>
+    <p class="more"><a href="/ja/products/">AppSheet とカスタム開発について →</a></p>
   </div>
 </section>
 
@@ -108,7 +117,7 @@
   <div class="wrap">
     <h2>お問い合わせ</h2>
     <div class="prose">
-      <p>システムを試してみたい、カスタムで作ってほしい、一緒に何かやりたい、ちょっと話してみたいだけ、どれでも気軽にメールしてください。</p>
+      <p>アイデアや困りごとはあるけれど、まだぼんやりしている、一緒に何かやりたい、ちょっと話してみたいだけ、どれでも気軽にメールしてください。</p>
     </div>
     <div class="contact-links">
       <a href="mailto:mengyahh@gmail.com">mengyahh@gmail.com</a>
