@@ -216,6 +216,7 @@ def page(*, title, desc, path_key, body, current=None, body_class='', og_image=N
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(desc)}">
+<meta name="robots" content="noindex">
 <link rel="canonical" href="{url}">
 {hreflang}<meta property="og:type" content="website">
 <meta property="og:site_name" content="Understory">
